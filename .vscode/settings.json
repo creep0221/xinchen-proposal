@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/4415aca4-4c90-46e2-b4f1-ae71de125aaa/resourceGroups/xinchen/providers/Microsoft.Web/sites/xinchen-web",
+    "appService.deploySubpath": "xinchen-web"
+}
