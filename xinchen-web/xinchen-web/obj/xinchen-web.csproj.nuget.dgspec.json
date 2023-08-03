@@ -41,6 +41,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "MongoDB.Bson": {
+              "target": "Package",
+              "version": "[2.20.0, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.20.0, )"
+            },
             "MongoDB.Driver.Core": {
               "target": "Package",
               "version": "[2.20.0, )"
