@@ -1,0 +1,35 @@
+﻿@page
+@model xinchen_web.Pages.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+@if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<form method="post">
+    <div>
+        <label for="username">帳號名稱：</label>
+        <input type="text" id="username" name="Username" required />
+    </div>
+    <div>
+        <label for="password">密碼：</label>
+        <input type="password" id="password" name="Password" required />
+    </div>
+    <div>
+        <button type="submit">註冊</button>
+    </div>
+    <div>
+        @TempData["ErrorMessage"]
+    </div>
+</form>
+
+
+
+
+
+
