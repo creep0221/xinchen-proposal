@@ -1,12 +1,18 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using xinchen_web;
 using MongoDB.Driver;
+using xinchen_web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.Configure<ConnectionStrings>(
-    builder.Configuration.GetSection("ConnectionStrings"));
+var connectionStrings = new ConnectionStrings();
+builder.Configuration.GetSection("ConnectionStrings").Bind(connectionStrings);
+builder.Services.AddTransient<MongoClient, MongoClient>(provider =>
+{
+    return new MongoClient(connectionStrings.Mongo);
+});
+builder.Services.AddScoped<MongoSvc>();
 
-//var connectionStrings = builder.Configuration.Get()
+
 //builder.Services.AddSingleton<MongoClient>(new MongoClient());
 // Add services to the container.
 builder.Services.AddRazorPages();

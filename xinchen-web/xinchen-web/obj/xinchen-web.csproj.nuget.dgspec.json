@@ -43,15 +43,11 @@
           "dependencies": {
             "MongoDB.Bson": {
               "target": "Package",
-              "version": "[2.20.0, )"
+              "version": "[2.18.0, )"
             },
             "MongoDB.Driver": {
               "target": "Package",
-              "version": "[2.20.0, )"
-            },
-            "MongoDB.Driver.Core": {
-              "target": "Package",
-              "version": "[2.20.0, )"
+              "version": "[2.18.0, )"
             }
           },
           "imports": [

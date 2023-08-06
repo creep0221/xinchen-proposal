@@ -3,11 +3,11 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace xinchen_web.Models
 {
-    public class UserVO
+    public class User
     {
         [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public int ID { get; set; }
+        [BsonRepresentation(BsonType.String)]
+        public string ID { get; set; }
         public string Account { get; set; }
         public string Password { get; set; }
         public string Name { get; set; }

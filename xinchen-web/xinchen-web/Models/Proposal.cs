@@ -2,7 +2,7 @@
 
 namespace xinchen_web.Models
 {
-    public class ProposalVO
+    public class Proposal
     {
         public int ID { get; set; }
         public string Name { get; set; }

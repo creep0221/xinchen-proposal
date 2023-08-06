@@ -29,8 +29,6 @@ C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\obj\Debug\net6.0\refin
 C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\obj\Debug\net6.0\xinchen-web.pdb
 C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\obj\Debug\net6.0\xinchen-web.genruntimeconfig.cache
 C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\obj\Debug\net6.0\ref\xinchen-web.dll
-C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\bin\Debug\net6.0\AWSSDK.Core.dll
-C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\bin\Debug\net6.0\AWSSDK.SecurityToken.dll
 C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\bin\Debug\net6.0\DnsClient.dll
 C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\bin\Debug\net6.0\MongoDB.Bson.dll
 C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\bin\Debug\net6.0\MongoDB.Driver.Core.dll
