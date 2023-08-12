@@ -1,0 +1,32 @@
+﻿@page
+@using xinchen_web.Models;
+@model xinchen_web.Pages.DocumentsModel
+@{
+    var allowCreateNew = true;
+    if (ViewData["AllowCreateNew"] != null)
+    {
+        allowCreateNew = (bool)ViewData["AllowCreateNew"];
+    }
+    var hasProposal = ViewData["ProposalList"] != null;
+    var proposalList = (List<Proposal>)ViewData["ProposalList"];
+}
+
+<ul>
+    @if (!hasProposal)
+    {
+        <li>建立第一本企畫書</li>
+    }
+    else if (allowCreateNew)
+    {
+        <li>建立企畫書</li>
+    }
+
+    @if(proposalList != null)
+    {
+        foreach (var proposal in proposalList)
+        {
+            <li>@proposal.Name</li>
+        }
+    }
+    
+</ul>

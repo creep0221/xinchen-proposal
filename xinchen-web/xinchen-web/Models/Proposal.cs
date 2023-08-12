@@ -1,10 +1,14 @@
-﻿using xinchen_web.Enumerables;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using xinchen_web.Enumerables;
 
 namespace xinchen_web.Models
 {
     public class Proposal
     {
-        public int ID { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
         public string Name { get; set; }
         public MarketStyle MarketStyle { get; set; }
         public MarketType MarketType { get; set; }

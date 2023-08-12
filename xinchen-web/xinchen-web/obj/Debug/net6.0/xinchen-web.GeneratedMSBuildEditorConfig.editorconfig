@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Source Code/xinchen-proposal-1/xinchen-web/xinchen-web/Pages/Documents.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRG9jdW1lbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Source Code/xinchen-proposal-1/xinchen-web/xinchen-web/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

@@ -22,8 +22,12 @@ namespace xinchen_web.Services
         public List<T> Get<T>(FilterDefinition<T> filter) =>
         _database.GetCollection<T>(typeof(T).Name).Find<T>(filter).ToList();
 
-        public void Create<T>(T entity) =>
-            _database.GetCollection<T>(typeof(T).Name).InsertOne(entity);
+        public async Task<T> Create<T>(T entity)
+        {
+            await _database.GetCollection<T>(typeof(T).Name).InsertOneAsync(entity);
+            return entity;
+        }
+
         
         public async Task<bool> ReplaceOneAsync<T>(FilterDefinition<T> filter, T replacement)
         {
