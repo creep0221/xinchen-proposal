@@ -1,11 +1,11 @@
-html {
+﻿html {
   font-size: 14px;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+@media screen and (max-width: 768px) {
+    .login-box {
+        max-width: 100%;
+    }
 }
 
 html {
@@ -14,5 +14,108 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
 }
+
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-box {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+.login-box label {
+    width: 100px; /* 设置标签的固定宽度，可以根据需要调整 */
+    display: inline-block; /* 将标签设置为块级元素，以便控制宽度 */
+    text-align: right; /* 将标签内容右对齐 */
+    margin-right: 10px; /* 添加一些右边距，可以根据需要调整 */
+}
+    .login-box .button-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .login-box button {
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top:20px;
+    margin-left:20px;
+}
+
+.proposal-box button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center; /* 将文本居中对齐 */
+    display: flex; /* 使用 Flex 布局 */
+    flex-direction: column; /* 垂直排列图像和文本 */
+    align-items: center; /* 水平居中对齐图像和文本 */
+    background-color: #fff;
+    color: #1f1f1f;
+}
+    .proposal-box button img {
+        width: 150px;
+        height: 180px;
+    }
+    .proposal-box button span {
+        margin-top: 5px;
+    }
+
+.proposal-detail-container {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+    .proposal-detail-container .marketstyle button {
+        padding: 0px;
+        width: 150px;
+        height:150px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 20px;
+    }
+    .proposal-detail-container .section {
+        text-align: center;
+        line-height: 100px;
+        margin: 10px 0; /* 添加上下边距，使每个盒子独占一行 */
+    }

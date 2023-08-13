@@ -20,6 +20,7 @@ namespace xinchen_web.Pages
 
         public void OnGet()
         {
+            
             //var mongoClient = new MongoClient("mongodb+srv://xinchen:Ep0zMZZcn4tcFKth@cluster0.1ndntna.mongodb.net/?retryWrites=true&w=majority");
             //var mongoDatabase = mongoClient.GetDatabase("xinchen");
 

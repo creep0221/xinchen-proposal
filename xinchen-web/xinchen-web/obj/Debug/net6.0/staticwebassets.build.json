@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IbbAnm+yYZSY/QmEbln3KoIcKVsLo/YVbjb8YtcbI9I=",
+  "Hash": "WjHKD+JqF73lidUtLDC7wZrFyTp9vNnk6O0hXAuI0oI=",
   "Source": "xinchen-web",
   "BasePath": "_content/xinchen-web",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\clipboard.png",
+      "SourceId": "xinchen-web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\",
+      "BasePath": "_content/xinchen-web",
+      "RelativePath": "images/clipboard.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\clipboard.png"
     },
     {
       "Identity": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\js\\site.js",

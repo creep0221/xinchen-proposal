@@ -1,0 +1,137 @@
+﻿@page
+@using xinchen_web.Enumerables;
+@using xinchen_web.Helpers;
+@model xinchen_web.Pages.ProposalModel
+@{
+    var buttonId = string.Empty;
+}
+
+<div class="proposal-detail-container">
+    <div class="section">
+        <h2>選擇市集風格</h2>
+        <div class="marketstyle">
+            <input type="hidden" id="marketstylevalue" name="MarketTypeValue" value="" />
+        @foreach (Enum item in Enum.GetValues(typeof(MarketStyle)))
+        {
+            if(!(item is MarketStyle.None))
+            {
+                var val = Convert.ToInt32(item);
+                buttonId = "btn" + item.ToString();
+                    <button name="@item.ToString()" value="@val" id="@buttonId" onclick="OnMarketStyleSelect('@item.ToString()')">
+                    @item.GetDescriptionText()
+                </button>
+            }
+        }
+        </div>
+        
+    </div>
+    <br />
+    <div class="section">
+        <h2>選擇市集類型</h2>
+        <div class="markettype">
+            <input type="hidden" id="markettypevalue" name="MarketTypeValue" value="" />
+            @foreach (Enum item in Enum.GetValues(typeof(MarketType)))
+            {
+                var val = Convert.ToInt32(item);
+                if (!(item is MarketType.None))
+                {
+                    buttonId = "btn" + item.ToString();
+                    <button name="@item.ToString()" value="@val" id="@buttonId" onclick="OnMarketTypeSelect('@item.ToString()')">
+                        @item.GetDescriptionText()
+                    </button>
+                }
+            }
+        </div>
+    </div>
+    <br />
+    <div class="section">
+        <h2>選擇市集細節</h2>
+        <div class="marketdetail">
+            <label for="ddlLocation">活動地區:</label>
+            <select id="ddlLocation" name="SelectLocation" asp-items="Model.SelectLocation"></select>
+        </div>
+        <div class="marketdetail">
+            <label for="ddlTent">攤位數量:</label>
+            <select id="ddlTent" name="SelectTent" asp-items="Model.SelectTent"></select>
+        </div>
+        <div class="marketdetail">
+            <label for="dropdown">帳篷需求:</label>
+            <select id="dropdown" name="SelectedOption">
+                <option value="0">-- 請選擇 --</option>
+                @foreach (var option in Model._marketSetting.MarketDetail)
+                {
+                    <option value="@option.Id">@option.Location</option>
+                }
+            </select>
+        </div>
+        <div class="marketdetail">
+            <label for="dropdown">電需求:</label>
+            <select id="dropdown" name="SelectedOption">
+                <option value="0">-- 請選擇 --</option>
+                @foreach (var option in Model._marketSetting.MarketDetail)
+                {
+                    <option value="@option.Id">@option.Location</option>
+                }
+            </select>
+        </div>
+        <div class="marketdetail">
+            <label for="dropdown">水需求:</label>
+            <select id="dropdown" name="SelectedOption">
+                <option value="0">-- 請選擇 --</option>
+                @foreach (var option in Model._marketSetting.MarketDetail)
+                {
+                    <option value="@option.Id">@option.Location</option>
+                }
+            </select>
+        </div>
+        <div class="marketdetail">
+            <label for="dropdown">招商模式:</label>
+            <select id="dropdown" name="SelectedOption">
+                <option value="0">-- 請選擇 --</option>
+                @foreach (var option in Model._marketSetting.MarketDetail)
+                {
+                    <option value="@option.Id">@option.Location</option>
+                }
+            </select>
+        </div>
+        <div class="marketdetail">
+            <label for="dropdown">預算級距:</label>
+            <select id="dropdown" name="SelectedOption">
+                <option value="0">-- 請選擇 --</option>
+                @foreach (var option in Model._marketSetting.MarketDetail)
+                {
+                    <option value="@option.Id">@option.Location</option>
+                }
+            </select>
+        </div>
+    </div>
+    <br />
+    <div class="section">
+        <h2>選擇市集加值服務</h2>
+        <p>Feel free to get in touch with us. Use the form below or call us at 123-456-7890.</p>
+        <a href="#" class="button">Contact Now</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function OnMarketStyleSelect(value) {
+        let allButtons = document.querySelectorAll('.marketstyle button');
+        allButtons.forEach(function (ele) { ele.style.backgroundColor = '#007bff'; });
+
+        let selectedButton = document.querySelector('#btn' + value);
+        selectedButton.style.backgroundColor = '#bf5422';
+
+        document.getElementById('marketstylevalue').value = selectedButton.value;
+    }
+
+    function OnMarketTypeSelect(value) {
+        let allButtons = document.querySelectorAll('.markettype button');
+        allButtons.forEach(function (ele) { ele.style.backgroundColor = '#007bff'; });
+
+        let selectedButton = document.querySelector('#btn' + value);
+        selectedButton.style.backgroundColor = '#bf5422';
+
+        document.getElementById('markettypevalue').value = selectedButton.value;
+    }
+    
+</script>

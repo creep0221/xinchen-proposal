@@ -11,20 +11,24 @@
 }
 
 <form method="post">
-    <div>
-        <label for="username">帳號名稱：</label>
-        <input type="text" id="username" name="Username" required />
-    </div>
-    <div>
-        <label for="password">密碼：</label>
-        <input type="password" id="password" name="Password" required />
-    </div>
-    <div>
-        <button type="submit" name="submitbutton" value="login">登入</button>
-        <button type="submit" name="submitbutton" value="register">註冊</button>
-    </div>
-    <div>
-        @TempData["ErrorMessage"]
+    <div class="login-container">
+        <div class="login-box">
+            <div>
+                <label for="username">帳號名稱：</label>
+                <input type="text" id="username" name="Username" required />
+            </div>
+            <div>
+                <label for="password">密碼：</label>
+                <input type="password" id="password" name="Password" required />
+            </div>
+            <div class="button-container">
+                <button type="submit" name="submitbutton" value="login">登入</button>
+                <button type="submit" name="submitbutton" value="register">註冊</button>
+            </div>
+            <div>
+                @TempData["ErrorMessage"]
+            </div>
+        </div>
     </div>
 </form>
 

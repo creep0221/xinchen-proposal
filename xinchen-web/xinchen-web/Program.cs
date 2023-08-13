@@ -3,10 +3,16 @@ using xinchen_web;
 using MongoDB.Driver;
 using xinchen_web.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using xinchen_web.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionStrings = new ConnectionStrings();
 builder.Configuration.GetSection("ConnectionStrings").Bind(connectionStrings);
+var marketSetting = new MarketSetting();
+builder.Configuration.AddJsonFile("marketsetting.json");
+builder.Configuration.GetSection("MarketSetting").Bind(marketSetting);
+builder.Services.AddSingleton(marketSetting);
+var t = marketSetting.MarketDetail;
 builder.Services.AddTransient<MongoClient, MongoClient>(provider =>
 {
     return new MongoClient(connectionStrings.Mongo);

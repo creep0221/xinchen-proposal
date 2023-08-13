@@ -11,10 +11,13 @@
     var proposalList = (List<Proposal>)ViewData["ProposalList"];
 }
 
-<ul>
+<ul class="proposal-box">
     @if (!hasProposal)
     {
-        <li>建立第一本企畫書</li>
+        <button>
+            <img src="@Url.Content("~/images/clipboard.png")" alt="Button Icon">
+            <span>建立第一本企畫書</span>
+        </button>
     }
     else if (allowCreateNew)
     {
