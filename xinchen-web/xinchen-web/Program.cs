@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using xinchen_web.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using xinchen_web.Models;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionStrings = new ConnectionStrings();
@@ -35,6 +36,8 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

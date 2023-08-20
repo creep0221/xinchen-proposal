@@ -1,30 +1,36 @@
 ﻿@page
 @using xinchen_web.Enumerables;
 @using xinchen_web.Helpers;
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@functions {
+    public string GetAntiXsrfRequestToken()
+    {
+        return Xsrf.GetAndStoreTokens(Model.HttpContext).RequestToken;
+    }
+}
 @model xinchen_web.Pages.ProposalModel
 @{
     var buttonId = string.Empty;
 }
-
 <div class="proposal-box">
     <div class="section">
         <h2>選擇市集風格</h2>
         <div class="marketbutton" id="divMarketStyle">
             <input type="hidden" id="marketstylevalue" name="MarketTypeValue" value="" />
-        @foreach (Enum item in Enum.GetValues(typeof(MarketStyle)))
-        {
-            if(!(item is MarketStyle.None))
+            @foreach (Enum item in Enum.GetValues(typeof(MarketStyle)))
             {
-                var val = Convert.ToInt32(item);
-                buttonId = "btn" + item.ToString();
-                <button name="@item.ToString()" value="@val" id="@buttonId">
-                @item.GetDescriptionText()
-                </button>
-                
+                if (!(item is MarketStyle.None))
+                {
+                    var val = Convert.ToInt32(item);
+                    buttonId = "btn" + item.ToString();
+                    <button name="@item.ToString()" value="@val" id="@buttonId">
+                        @item.GetDescriptionText()
+                    </button>
+
+                }
             }
-        }
         </div>
-        
+
     </div>
     <br />
     <div class="section">
@@ -80,12 +86,12 @@
     <div class="section">
         <h2>選擇市集加值服務</h2>
         <div class="middle">
-            
-            @foreach(var addon in Model.Addons)
+
+            @foreach (var addon in Model.Addons)
             {
                 var chkId = "chk" + addon.Id.ToString();
                 <div class="marketdetail">
-                    <input type="checkbox" id="@chkId" name="@chkId" value="addon.Id" />
+                    <input type="checkbox" id="@chkId" name="@chkId" value="@addon.Id" />
                     <label class="checkbox" for="@chkId">@addon.Name</label>
                 </div>
             }
@@ -93,12 +99,13 @@
     </div>
     <br />
     <div class="section">
-        <button type="submit">送出</button>
+        <button type="submit" id="btnSubmit">送出</button>
     </div>
 </div>
+
 @section Scripts{
     <script type="text/javascript">
-        $(document).ready(function(){
+        $(document).ready(function () {
             $('#ddlLocation').change(function () {
                 var locationId = $(this).val();
                 //console.log(locationId);
@@ -115,6 +122,24 @@
                 $('#divMarketType button').css('background-color', '#007bff');
                 $(this).css('background-color', '#bf5422');
                 $('#markettypevalue').val($(this).val());
+            });
+
+            $('#btnSubmit').click(function(){
+                alert('@GetAntiXsrfRequestToken()');
+                var person = { "FirstName": "Andrew", "LastName": "Lock", "Age": 31 };
+                $.ajax({
+                    type: "POST",
+                    url: "Proposal?handler=Abc",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(person),
+                    headers: {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                })
+                    .done(function (result) {
+                        console.log(result);
+                    });
             });
         });
 

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using xinchen_web.Models;
 
 namespace xinchen_web.Pages
@@ -50,9 +51,25 @@ namespace xinchen_web.Pages
             
         }
         
-        public void OnPost()
+        public void OnPostSubmit()
         {
+            var a = Request.Form["chk1"];
+            var b = Request.Form["ddlLocation"];
+        }
 
+        public IActionResult OnPostAbc([FromBody] Person person)
+        {
+            return new JsonResult("my result");
+        }
+
+        public class Person { 
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public int Age { get; set; }
+        }
+        public IActionResult OnPostReadMsg()
+        {
+            return Content(DateTime.Now.Ticks.ToString() + ":AjaxPost");
         }
 
         public JsonResult OnGetSubItems(int locationId)
