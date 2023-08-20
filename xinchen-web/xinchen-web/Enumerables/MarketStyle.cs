@@ -26,7 +26,7 @@ namespace xinchen_web.Enumerables
         /// <summary>
         /// 4.異國文化風(日系/美系)
         /// </summary>
-        [Description("異國文化風 (日系/美系)")]
+        [Description("異國文化風(日系/美系)")]
         CrossCulture = 4,
         /// <summary>
         /// 5. Outdoor野營風

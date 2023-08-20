@@ -6,6 +6,9 @@
     .login-box {
         max-width: 100%;
     }
+    .proposal-box {
+        max-width: 100%;
+    }
 }
 
 html {
@@ -19,7 +22,20 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
 }
-
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 20px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: normal;
+}
 
 .login-container {
     display: flex;
@@ -69,19 +85,7 @@ input[type="password"] {
     font-size: 16px;
 }
 
-button {
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top:20px;
-    margin-left:20px;
-}
-
-.proposal-box button {
+.document-box button {
     padding: 10px 20px;
     background-color: #007bff;
     border: none;
@@ -94,28 +98,66 @@ button {
     background-color: #fff;
     color: #1f1f1f;
 }
-    .proposal-box button img {
+    .document-box button img {
         width: 150px;
         height: 180px;
     }
-    .proposal-box button span {
+    .document-box button span {
         margin-top: 5px;
     }
 
-.proposal-detail-container {
-    padding: 20px;
+.proposal-box {
+
+/*    padding: 20px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-end;*/
 }
-    .proposal-detail-container .marketstyle button {
+    .proposal-box .marketbutton button {
         padding: 0px;
         width: 150px;
-        height:150px;
+        height: 150px;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: 300;
         font-size: 20px;
     }
-    .proposal-detail-container .section {
+
+    .proposal-box .section {
         text-align: center;
-        line-height: 100px;
-        margin: 10px 0; /* 添加上下边距，使每个盒子独占一行 */
+        height: 350px;
+        margin: 10px 0;
     }
+
+.marketdetail {
+    height:30px;
+    margin-top:10px;
+}
+.marketdetail label.select {
+    display: inline-block; /* 讓 <label> 元素佔據單獨的一行，以便對齊 */
+    width: 100px; /* 設定 <label> 的寬度，根據需求調整 */
+    text-align: left; /* 將 <label> 內的文本內容靠左對齊 */
+    margin-right: 10px; /* 為了增加 <label> 和輸入框之間的間距 */
+}
+.marketdetail select {
+    width: 330px;
+    max-width: 330px; /* 設定下拉選單的最大寬度 */
+    font-size: 14px; /* 設定字體大小 */
+    overflow: hidden;
+    white-space: nowrap;
+}
+    .marketdetail option {
+        width: 330px;
+        max-width: 330px; /* 設定選項的最大寬度 */
+        overflow: hidden;
+        text-overflow: ellipsis; /* 超過最大寬度時顯示省略號 */
+    }
+    .marketdetail input[type=checkbox] {
+        display: inline-block; /* 讓 <label> 元素佔據單獨的一行，以便對齊 */
+        width: 20px; /* 設定 <label> 的寬度，根據需求調整 */
+    }
+    .marketdetail label.checkbox {
+        display: inline-block; /* 讓 <label> 元素佔據單獨的一行，以便對齊 */
+        width: 200px; /* 設定 <label> 的寬度，根據需求調整 */
+        font-size: 14px;
+        margin-right: 10px; /* 為了增加 <label> 和輸入框之間的間距 */
+    }
+

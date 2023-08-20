@@ -8,3 +8,25 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            //$.ajax({
+            //    type: 'GET',
+            //    url: 'Index?handler=GetSubItems',
+            //    contentType: 'application/json; charset=utf-8',
+            //    dataType: 'json',
+            //    success: function (result) {
+            //        console.log(result);
+            //    },
+            //    error: function (req, status, error) {
+            //        console.log(error);
+            //    }
+            //});
+            $.get("Index?handler=SubItems").done(function (result) {
+                console.log(result);
+            });
+        });
+    </script>
+}

@@ -3,6 +3,7 @@
     public class MarketSetting
     {
         public MarketDetail[] MarketDetail { get; set; }
+        public AddonService[] AddonService { get; set; }
     }
     public class MarketDetail
     {
@@ -17,6 +18,11 @@
 
     }
 
+    public class AddonService 
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
     public class MarketScale
     {
         public int Id { get; set; }

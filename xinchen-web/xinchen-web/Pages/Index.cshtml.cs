@@ -18,24 +18,30 @@ namespace xinchen_web.Pages
             this.mongoSvc = mongoSvc;
         }
 
-        public void OnGet()
+        //public void OnGet()
+        //{
+
+        //    //var mongoClient = new MongoClient("mongodb+srv://xinchen:Ep0zMZZcn4tcFKth@cluster0.1ndntna.mongodb.net/?retryWrites=true&w=majority");
+        //    //var mongoDatabase = mongoClient.GetDatabase("xinchen");
+
+        //    //var collection = mongoDatabase.GetCollection<User>(
+        //    //    "User");
+
+        //    //try
+        //    //{
+        //    //    var username = "admin";
+        //    //    var filter = Builders<User>.Filter.Eq(x => x.Account, username);
+        //    //    var test =mongoSvc.Get<User>(filter).ToList();
+        //    //    var t = collection.Find<User>(x => x.Account == username).ToList();
+        //    //}
+        //    //catch (Exception ex) { throw ex; }
+
+        //}
+        public JsonResult OnGetSubItems()
         {
             
-            //var mongoClient = new MongoClient("mongodb+srv://xinchen:Ep0zMZZcn4tcFKth@cluster0.1ndntna.mongodb.net/?retryWrites=true&w=majority");
-            //var mongoDatabase = mongoClient.GetDatabase("xinchen");
+            return new JsonResult(new string[] { "a", "b", "c" });
 
-            //var collection = mongoDatabase.GetCollection<User>(
-            //    "User");
-
-            //try
-            //{
-            //    var username = "admin";
-            //    var filter = Builders<User>.Filter.Eq(x => x.Account, username);
-            //    var test =mongoSvc.Get<User>(filter).ToList();
-            //    var t = collection.Find<User>(x => x.Account == username).ToList();
-            //}
-            //catch (Exception ex) { throw ex; }
-            
         }
     }
 }
