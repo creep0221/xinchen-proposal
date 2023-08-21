@@ -25,11 +25,14 @@ builder.Services.AddScoped<MongoSvc>();
 // Add services to the container.
 builder.Services.AddRazorPages(options =>
 {
-    options.Conventions.AllowAnonymousToPage("/Login");
+    options.Conventions.AllowAnonymousToPage("/Index");
+    options.Conventions.AuthorizePage("/Document");
+    options.Conventions.AuthorizePage("/Proposal");
+
 });
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(
-    options => { options.LoginPath = new PathString("/Login"); } //设置登录页面为/Login
+    options => { options.LoginPath = new PathString("/Index"); } //设置登录页面为/Login
 );
 builder.Services.AddSession(options =>
 {

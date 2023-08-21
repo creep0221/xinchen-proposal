@@ -1,32 +1,45 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Login";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4"></h1>
 </div>
-
-@section Scripts{
-    <script>
-        $(document).ready(function () {
-            //$.ajax({
-            //    type: 'GET',
-            //    url: 'Index?handler=GetSubItems',
-            //    contentType: 'application/json; charset=utf-8',
-            //    dataType: 'json',
-            //    success: function (result) {
-            //        console.log(result);
-            //    },
-            //    error: function (req, status, error) {
-            //        console.log(error);
-            //    }
-            //});
-            $.get("Index?handler=SubItems").done(function (result) {
-                console.log(result);
-            });
-        });
-    </script>
+@if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
 }
+
+
+<form method="post">
+    <div class="login-container">
+        <div class="login-box">
+            <div>
+                <label for="username">帳號名稱：</label>
+                <input type="text" id="username" name="Username" required />
+            </div>
+            <div>
+                <label for="password">密碼：</label>
+                <input type="password" id="password" name="Password" required />
+            </div>
+
+            <div class="button-container">
+                <div class="flex">
+                    <input type="checkbox" id="rememberme" />
+                    <label for="rememberme">記住我</label>
+                </div>
+                <div class="flex">
+                    <button type="submit" name="submitbutton" value="login">登入</button>
+                    <button type="submit" name="submitbutton" value="register">註冊</button>
+                </div>
+            </div>
+            <div>
+                @TempData["ErrorMessage"]
+            </div>
+        </div>
+    </div>
+</form>

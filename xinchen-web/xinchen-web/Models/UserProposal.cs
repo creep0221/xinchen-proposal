@@ -7,6 +7,6 @@ namespace xinchen_web.Models
         [BsonId]
         public string Id { get; set; }
         public string UserId { get; set; }
-        public string[] ProposalId { get; set; }
+        public List<string> ProposalId { get; set; }
     }
 }

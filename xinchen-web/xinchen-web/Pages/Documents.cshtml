@@ -11,6 +11,7 @@
     var proposalList = (List<Proposal>)ViewData["ProposalList"];
 }
 
+<form method="post">
 <ul class="document-box">
     @if (!hasProposal)
     {
@@ -21,7 +22,11 @@
     }
     else if (allowCreateNew)
     {
-        <li>建立企畫書</li>
+        <button>
+            <img src="@Url.Content("~/images/clipboard.png")" alt="Button Icon">
+            <span>建立企畫書</span>
+        </button>
+        <li></li>
     }
 
     @if(proposalList != null)
@@ -33,3 +38,4 @@
     }
     
 </ul>
+</form>

@@ -51,6 +51,7 @@ button {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
+    background-color: #cacaca
 }
 .login-box label {
     width: 100px; /* 设置标签的固定宽度，可以根据需要调整 */
@@ -61,6 +62,14 @@ button {
     .login-box .button-container {
         display: flex;
         justify-content: flex-end;
+    }
+    .login-box .button-container .flex {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .flex label {
+        text-align:center;
+        margin-top: 20px;
     }
     .login-box button {
         padding: 10px;

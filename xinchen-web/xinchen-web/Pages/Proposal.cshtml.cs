@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using MongoDB.Driver;
 using System;
+using System.Security.Claims;
 using xinchen_web.Models;
+using xinchen_web.Services;
 
 namespace xinchen_web.Pages
 {
@@ -10,6 +13,8 @@ namespace xinchen_web.Pages
     {
         
         public readonly MarketSetting _marketSetting;
+        private readonly MongoSvc _mongoSvc;
+
         private SelectListItem _defaultSelection;
         public List<SelectListItem> SelectLocation { get; set; }
         public List<SelectListItem> SelectMarketScale { get; set; }
@@ -20,9 +25,10 @@ namespace xinchen_web.Pages
         public List<SelectListItem> SelectBudgetLevel { get; set; }
         public List<AddonService> Addons { get; set; }
 
-        public ProposalModel(MarketSetting marketSetting)
+        public ProposalModel(MarketSetting marketSetting, MongoSvc mongoSvc)
         {
             _marketSetting = marketSetting;
+            _mongoSvc = mongoSvc;
             _defaultSelection = new SelectListItem { Value = "0", Text = "-- 請選擇 --" };
         }
         public void OnGet()
@@ -57,20 +63,35 @@ namespace xinchen_web.Pages
             var b = Request.Form["ddlLocation"];
         }
 
-        public IActionResult OnPostAbc([FromBody] Person person)
+        public IActionResult OnPostSaveProposal([FromBody] Proposal proposal)
         {
-            return new JsonResult("my result");
+            ClaimsPrincipal cp = HttpContext.User;
+            if (!cp.Identity.IsAuthenticated)
+                return new JsonResult("請重新登入");
+
+            List<Claim> claims = cp.Claims.ToList<Claim>();
+            string userId = claims.Single<Claim>(option => option.Type == "UserId").Value;
+            var user = _mongoSvc.Get(Builders<User>.Filter.Eq(x => x.Id, userId)).FirstOrDefault();
+
+            if (user == null)
+                return new JsonResult("請重新登入");
+
+            if (!IsProposalValid(proposal))
+            {
+                return new JsonResult("企劃書內容不正確");
+            }
+            else
+            {
+                _mongoSvc.Create(proposal);
+                var userProposal = _mongoSvc.Get<UserProposal>(Builders<UserProposal>.Filter.Eq(x => x.UserId, userId)).FirstOrDefault();
+                userProposal.ProposalId.Add(proposal.Id);
+                _mongoSvc.ReplaceOneAsync(Builders<UserProposal>.Filter.Eq(x => x.UserId, userId), userProposal);
+            }
+
+            return Redirect("/Documents");
+            
         }
 
-        public class Person { 
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public int Age { get; set; }
-        }
-        public IActionResult OnPostReadMsg()
-        {
-            return Content(DateTime.Now.Ticks.ToString() + ":AjaxPost");
-        }
 
         public JsonResult OnGetSubItems(int locationId)
         {
@@ -91,6 +112,22 @@ namespace xinchen_web.Pages
             }
             return null;
 
+        }
+
+        private bool IsProposalValid(Proposal proposal)
+        {
+            if (proposal == null) { return false; }
+            else if (proposal.MarketStyle == 0 ||
+                proposal.MarketType == 0 ||
+                proposal.Location == 0 ||
+                proposal.MarketScale == 0 ||
+                proposal.Tent == 0 ||
+                proposal.Electricity == 0 ||
+                proposal.WaterFacility == 0 ||
+                proposal.CharingMode == 0 ||
+                proposal.BudgetLevel == 0)
+                return false;
+            else return true;
         }
     }
 }

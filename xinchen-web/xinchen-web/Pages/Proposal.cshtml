@@ -91,7 +91,7 @@
             {
                 var chkId = "chk" + addon.Id.ToString();
                 <div class="marketdetail">
-                    <input type="checkbox" id="@chkId" name="@chkId" value="@addon.Id" />
+                    <input type="checkbox" class="addon" id="@chkId" name="addon" value="@addon.Id" />
                     <label class="checkbox" for="@chkId">@addon.Name</label>
                 </div>
             }
@@ -99,6 +99,8 @@
     </div>
     <br />
     <div class="section">
+        <label for="proposalname">企劃書名稱：</label>
+        <input type="text" id="proposalname" name="ProposalName" required />
         <button type="submit" id="btnSubmit">送出</button>
     </div>
 </div>
@@ -125,21 +127,37 @@
             });
 
             $('#btnSubmit').click(function(){
-                alert('@GetAntiXsrfRequestToken()');
-                var person = { "FirstName": "Andrew", "LastName": "Lock", "Age": 31 };
+                var addonService = new Array();
+                $("input:checkbox[name=addon]:checked").each(function () {
+                    addonService.push($(this).val());
+                });
+
+                var proposal = { 
+                    'MarketStyle': $('#marketstylevalue').val(),
+                    'MarketType': $('#markettypevalue').val(),
+                    'Location': $('#ddlLocation').val(),
+                    'MarketScale': $('#ddlMarketScale').val(),
+                    'Tent': $('#ddlTent').val(),
+                    'Electricity': $('#ddlElectricity').val(),
+                    'WaterFacility': $('#ddlWaterFacility').val(),
+                    'CharingMode': $('#ddlCharingMode').val(),
+                    'BudgetLevel': $('#ddlBudgetLevel').val(),
+                    'AddonService': addonService,
+                    'Name':$('#proposalname').val()
+                };
                 $.ajax({
                     type: "POST",
-                    url: "Proposal?handler=Abc",
+                    url: "Proposal?handler=SaveProposal",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    data: JSON.stringify(person),
+                    data: JSON.stringify(proposal),
                     headers: {
                         "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
                     },
                 })
-                    .done(function (result) {
-                        console.log(result);
-                    });
+                .done(function (result) {
+                    console.log(result);
+                });
             });
         });
 

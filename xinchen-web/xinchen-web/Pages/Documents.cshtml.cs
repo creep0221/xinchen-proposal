@@ -51,5 +51,10 @@ namespace xinchen_web.Pages
 
             }
         }
+
+        public void OnPost()
+        {
+            Response.Redirect("/Proposal");
+        }
     }
 }

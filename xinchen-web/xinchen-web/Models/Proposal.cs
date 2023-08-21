@@ -10,16 +10,18 @@ namespace xinchen_web.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         public string Name { get; set; }
-        public MarketStyle MarketStyle { get; set; }
-        public MarketType MarketType { get; set; }
-        public MarketLocation Location { get; set; }
-        public MarketScale MarketScale { get; set; }
-        public int Tent { get; set; }
-        public int Electricity { get; set; }
-        public int WaterFacility { get; set; }
-        public int CharingMode { get; set; }
-        public int BudgetLevel { get; set; }
-        public int Status { get; set; }
+
+        public short MarketStyle { get; set; }
+        public short MarketType { get; set; }
+        public short Location { get; set; }
+        public short MarketScale { get; set; }
+        public short Tent { get; set; }
+        public short Electricity { get; set; }
+        public short WaterFacility { get; set; }
+        public short CharingMode { get; set; }
+        public short BudgetLevel { get; set; }
+        public short[] AddonService { get; set; }
+        public short Status { get; set; }
 
     }
 
