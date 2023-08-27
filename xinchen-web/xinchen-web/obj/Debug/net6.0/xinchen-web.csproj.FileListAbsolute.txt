@@ -42,3 +42,4 @@ C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\bin\Debug\net6.0\runti
 C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\obj\Debug\net6.0\xinchen-web.csproj.CopyComplete
 C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\bin\Debug\net6.0\MongoDB.Driver.dll
 C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\bin\Debug\net6.0\marketsetting.json
+C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\bin\Debug\net6.0\marketdescription.json

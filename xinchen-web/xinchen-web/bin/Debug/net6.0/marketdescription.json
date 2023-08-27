@@ -1,0 +1,64 @@
+{
+  "MarketDescription": {
+    "StyleDescription": [
+      {
+        "Id": 1,
+        "MarketStyle": 1,
+        "MarketStyleTitle": "動物森林手作市集",
+        "MarketStyleGoal": "<p>在於以一個愉悅、充滿童趣的方式，凝聚社區中對於大自然和動物的關注與愛護，透過創意手作藝術的表現，喚起人們對於生態平衡的重要性的認識，同時鼓勵參與者以自己的創作去探索動植物、森林環境所帶來的美妙與奧秘，進而促進可持續環保思維和保護大自然的行動。我們期待透過這個市集，串聯起一個關愛、尊重及和諧共處於動物和綠意之間的社區，並為我們的子孫締造一個更美好的環境。 </p>",
+        "MarketStyleFactor": "<p>透過「動物森林手作市集」的設計繪製，我們將以豐富的圖像和色彩，呈現一個充滿活力、自然與童趣的場景，引領參與者進入一個歡樂的大自然世界。以下是設計繪製方向的詳細描述： ",
+        "MarketStyleFeature": ""
+      },
+      {
+        "Id": 2,
+        "MarketStyle": 2,
+        "MarketStyleTitle": "",
+        "MarketStyleGoal": "",
+        "MarketStyleFactor": "",
+        "MarketStyleFeature": ""
+      },
+      {
+        "Id": 3,
+        "MarketStyle": 3,
+        "MarketStyleTitle": "",
+        "MarketStyleGoal": "",
+        "MarketStyleFactor": "",
+        "MarketStyleFeature": ""
+      },
+      {
+        "Id": 4,
+        "MarketStyle": 4,
+        "MarketStyleTitle": "",
+        "MarketStyleGoal": "",
+        "MarketStyleFactor": "",
+        "MarketStyleFeature": ""
+      },
+      {
+        "Id": 5,
+        "MarketStyle": 5,
+        "MarketStyleTitle": "",
+        "MarketStyleGoal": "",
+        "MarketStyleFactor": "",
+        "MarketStyleFeature": ""
+      },
+      {
+        "Id": 6,
+        "MarketStyle": 6,
+        "MarketStyleTitle": "",
+        "MarketStyleGoal": "",
+        "MarketStyleFactor": "",
+        "MarketStyleFeature": ""
+      }
+    ],
+    "TypeDescription": [
+      {
+        "Id": 1,
+        "MarketType": 1,
+        "MarketTypeCombination": ""
+      }
+    ],
+    "ExecutionDetail": [
+
+    ] 
+  }
+}

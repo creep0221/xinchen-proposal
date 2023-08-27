@@ -19,7 +19,7 @@ builder.Services.AddTransient<MongoClient, MongoClient>(provider =>
     return new MongoClient(connectionStrings.Mongo);
 });
 builder.Services.AddScoped<MongoSvc>();
-
+builder.Services.AddSingleton<MarketDescription>();
 
 //builder.Services.AddSingleton<MongoClient>(new MongoClient());
 // Add services to the container.

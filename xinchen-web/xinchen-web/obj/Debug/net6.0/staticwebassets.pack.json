@@ -13,8 +13,24 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\checklist_2666505.png",
+      "PackagePath": "staticwebassets\\images\\checklist_2666505.png"
+    },
+    {
       "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\clipboard.png",
       "PackagePath": "staticwebassets\\images\\clipboard.png"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\document_887997.png",
+      "PackagePath": "staticwebassets\\images\\document_887997.png"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\paperwork_9874793.png",
+      "PackagePath": "staticwebassets\\images\\paperwork_9874793.png"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\proposalimages\\01animalforest.jpg",
+      "PackagePath": "staticwebassets\\images\\proposalimages\\01animalforest.jpg"
     },
     {
       "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\js\\site.js",

@@ -93,8 +93,10 @@ input[type="password"] {
     border-radius: 3px;
     font-size: 16px;
 }
-
-.document-box button {
+.document-box {
+    display: flex;
+}
+.document-item {
     padding: 10px 20px;
     background-color: #007bff;
     border: none;
@@ -107,10 +109,42 @@ input[type="password"] {
     background-color: #fff;
     color: #1f1f1f;
 }
-    .document-box button img {
-        width: 150px;
-        height: 180px;
-    }
+.document-box button {
+    background-color: #007bff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center; /* 将文本居中对齐 */
+    display: flex; /* 使用 Flex 布局 */
+    flex-direction: column; /* 垂直排列图像和文本 */
+    align-items: center; /* 水平居中对齐图像和文本 */
+    background-color: #fff;
+    color: #1f1f1f;
+}
+.document-item img {
+    width: 150px;
+    height: 180px;
+    margin-top: 20px;
+}
+.document-item span {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.document-item .button {
+    padding: 5px;
+    background-color: #007bff;
+    color: #fff;
+    margin-top: 10px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center; /* 将文本居中对齐 */
+}
+.document-box button img {
+    width: 150px;
+    height: 180px;
+}
     .document-box button span {
         margin-top: 5px;
     }

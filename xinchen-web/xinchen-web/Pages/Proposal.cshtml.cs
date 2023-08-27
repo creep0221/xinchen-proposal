@@ -83,9 +83,22 @@ namespace xinchen_web.Pages
             else
             {
                 _mongoSvc.Create(proposal);
-                var userProposal = _mongoSvc.Get<UserProposal>(Builders<UserProposal>.Filter.Eq(x => x.UserId, userId)).FirstOrDefault();
-                userProposal.ProposalId.Add(proposal.Id);
-                _mongoSvc.ReplaceOneAsync(Builders<UserProposal>.Filter.Eq(x => x.UserId, userId), userProposal);
+                UserProposal userProposal = null;
+                userProposal = _mongoSvc.Get<UserProposal>(Builders<UserProposal>.Filter.Eq(x => x.UserId, userId)).FirstOrDefault();
+                if (userProposal == null)
+                {
+                    userProposal = new UserProposal()
+                    {
+                        UserId = userId,
+                        ProposalId = new List<string>() { proposal.Id }
+                    };
+                    _mongoSvc.Create(userProposal);
+                }
+                else
+                {
+                    userProposal.ProposalId.Add(proposal.Id);
+                    _mongoSvc.ReplaceOneAsync(Builders<UserProposal>.Filter.Eq(x => x.UserId, userId), userProposal);
+                }
             }
 
             return Redirect("/Documents");

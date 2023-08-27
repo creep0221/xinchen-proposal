@@ -30,6 +30,14 @@ namespace xinchen_web.Pages
         public string Password { get; set; }
         public void OnGet()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                Response.Redirect("/Documents");
+            }
+            else
+            {
+                Response.Redirect("/Login");
+            }
         }
 
         public async Task OnPost(string submitbutton)

@@ -29,9 +29,9 @@ namespace xinchen_web.Services
         }
 
         
-        public async Task<bool> ReplaceOneAsync<T>(FilterDefinition<T> filter, T replacement)
+        public bool ReplaceOneAsync<T>(FilterDefinition<T> filter, T replacement)
         {
-            ReplaceOneResult result = await _database.GetCollection<T>(typeof(T).Name).ReplaceOneAsync(filter, replacement);
+            ReplaceOneResult result = _database.GetCollection<T>(typeof(T).Name).ReplaceOne(filter, replacement);
             return result.IsAcknowledged && result.ModifiedCount > 0;
         }
         //public async Task RemoveAsync(string id) =>

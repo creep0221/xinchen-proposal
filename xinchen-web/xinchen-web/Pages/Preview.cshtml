@@ -1,0 +1,23 @@
+﻿@page
+@model xinchen_web.Pages.PreviewModel
+@{
+}
+
+<h1>活動名稱：@Html.Raw(Model.MarketStyleTitle)</h1>
+<div>
+    <img src="@Url.Content(Model.StyleImagePath)"
+    <p>活動日期：</p>
+</div>
+
+<h1>一、活動宗旨： </h1>
+<div>
+    @Html.Raw(Model.MarketStyleGoal)
+</div>
+<h1>二、設計元素： </h1>
+<div>
+    @Html.Raw(Model.MarketStyleFactor)
+</div>
+<h1>三、活動特色：</h1>
+<div>
+    @Html.Raw(Model.MarketStyleFeature)
+</div>

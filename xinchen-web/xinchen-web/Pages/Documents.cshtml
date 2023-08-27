@@ -1,5 +1,12 @@
 ﻿@page
 @using xinchen_web.Models;
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@functions {
+    public string GetAntiXsrfRequestToken()
+    {
+        return Xsrf.GetAndStoreTokens(Model.HttpContext).RequestToken;
+    }
+}
 @model xinchen_web.Pages.DocumentsModel
 @{
     var allowCreateNew = true;
@@ -11,31 +18,48 @@
     var proposalList = (List<Proposal>)ViewData["ProposalList"];
 }
 
-<form method="post">
-<ul class="document-box">
+<div class="document-box">
     @if (!hasProposal)
     {
-        <button>
-            <img src="@Url.Content("~/images/clipboard.png")" alt="Button Icon">
+        <div id="divNew" class="document-item">
+            <img src="@Url.Content("~/images/checklist_2666505.png")" alt="Button Icon">
             <span>建立第一本企畫書</span>
-        </button>
+        </div>
     }
     else if (allowCreateNew)
     {
-        <button>
-            <img src="@Url.Content("~/images/clipboard.png")" alt="Button Icon">
+        <div id="divNew" class="document-item">
+            <img src="@Url.Content("~/images/checklist_2666505.png")" alt="Button Icon">
             <span>建立企畫書</span>
-        </button>
-        <li></li>
+        </div>
     }
 
     @if(proposalList != null)
     {
         foreach (var proposal in proposalList)
         {
-            <li>@proposal.Name</li>
+                var ddlId = "ddl" + proposal.Id;
+
+            <div class="document-item">
+                <img src="@Url.Content("~/images/paperwork_9874793.png")" alt="Button Icon">
+                <span>@proposal.Name</span>
+                <div>
+                    <select id="ddlTent" name="SelectProposalStatus" asp-items="Model.SelectProposalStatus"></select>
+                    <span class="button">刪除</span>
+                </div>
+            </div>
+            
         }
     }
     
-</ul>
-</form>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#divNew').click(function () {
+                window.location.href = "@Url.Page("/Proposal")";
+            })
+        });
+    </script>
+}

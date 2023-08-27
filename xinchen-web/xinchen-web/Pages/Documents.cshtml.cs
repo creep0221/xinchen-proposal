@@ -1,15 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MongoDB.Driver;
 using System.Security.Claims;
+using xinchen_web.Enumerables;
+using xinchen_web.Helpers;
 using xinchen_web.Models;
 using xinchen_web.Services;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace xinchen_web.Pages
 {
     public class DocumentsModel : PageModel
     {
         private readonly MongoSvc _mongoSvc;
+        public List<SelectListItem> SelectProposalStatus { get; set; }
         public DocumentsModel(MongoSvc mongoSvc)
         {
             _mongoSvc = mongoSvc;
@@ -49,12 +54,14 @@ namespace xinchen_web.Pages
                     }
                 }
 
+
+                SelectProposalStatus = new List<SelectListItem>();
+                foreach (Enum item in Enum.GetValues(typeof(ProposalStatus)))
+                {
+                    SelectProposalStatus.Add(new SelectListItem() { Value = (Convert.ToInt32(item)).ToString(), Text = item.GetDescriptionText() });
+                }
             }
         }
 
-        public void OnPost()
-        {
-            Response.Redirect("/Proposal");
-        }
     }
 }
