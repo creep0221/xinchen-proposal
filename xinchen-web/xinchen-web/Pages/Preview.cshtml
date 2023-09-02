@@ -2,22 +2,59 @@
 @model xinchen_web.Pages.PreviewModel
 @{
 }
-
-<h1>活動名稱：@Html.Raw(Model.MarketStyleTitle)</h1>
-<div>
-    <img src="@Url.Content(Model.StyleImagePath)"
+<div class="preivew" style="font-family: DFKai-sb;">
+    <h1>活動名稱：@Html.Raw(Model.MarketStyleTitle)</h1>
+    <div>
+        <img src="@Url.Content(Model.StyleImagePath)" />
+    </div>
     <p>活動日期：</p>
-</div>
 
-<h1>一、活動宗旨： </h1>
-<div>
-    @Html.Raw(Model.MarketStyleGoal)
-</div>
-<h1>二、設計元素： </h1>
-<div>
-    @Html.Raw(Model.MarketStyleFactor)
-</div>
-<h1>三、活動特色：</h1>
-<div>
-    @Html.Raw(Model.MarketStyleFeature)
+    <h1>一、活動宗旨： </h1>
+    <div>
+        @Html.Raw(Model.MarketStyleGoal)
+    </div>
+    <h1>二、設計元素： </h1>
+    <div>
+        @Html.Raw(Model.MarketStyleFactor)
+    </div>
+    <h1>三、活動特色：</h1>
+    <div>
+        @Html.Raw(Model.MarketStyleFeature)
+    </div>
+    <h1>四、攤位組成：</h1>
+    <div>
+        @Html.Raw(Model.MarketTypeDesc)
+    </div>
+    <h1>五、市集執行細節：</h1>
+    <div>
+        <p>1.地點: @Model.Location</p>
+        <div>
+            @Html.Raw(Model.LocationDesc)
+        </div>
+        <p>2.規模: @Model.Scale</p>
+        <div>
+            @Html.Raw(Model.ScaleDesc)
+        </div>
+        <p>3. 帳篷需求: @Model.Tent</p>
+        <div>
+            @Html.Raw(Model.TentDesc)
+        </div>
+        <p>4. 電力需求: @Model.Electricity</p>
+        <div>
+            @Html.Raw(Model.ElectricityDesc)
+        </div>
+        <p>5.水需求: @Model.WaterFacility</p>
+        <div>
+            @Html.Raw(Model.WaterFacilityDesc)
+        </div>
+        <p>6. 招商模式: @Model.CharingMode</p>
+        <div>
+            @Html.Raw(Model.CharingModeDesc)
+        </div>
+        <p>7. 預算級距: @Model.BudgetLevel</p>
+        <div>
+            <p>此市集預算約</p>
+            @Html.Raw(Model.BudgetLevelDesc)
+        </div>
+    </div>
 </div>

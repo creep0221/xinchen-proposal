@@ -1,5 +1,5 @@
 ﻿html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media screen and (max-width: 768px) {
@@ -203,4 +203,13 @@ input[type="password"] {
         font-size: 14px;
         margin-right: 10px; /* 為了增加 <label> 和輸入框之間的間距 */
     }
+.preivew div {
+    font-family: DFKai-sb;
+}
+
+.preivew img {
+    max-width: 500px; /* 设置最大宽度 */
+    max-height: 400px; /* 设置最大高度 */
+    /* 其他样式属性，如果需要的话 */
+}
 

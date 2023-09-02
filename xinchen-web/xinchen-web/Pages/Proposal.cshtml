@@ -128,24 +128,7 @@
             });
 
             $('#btnSubmit').click(function(){
-                var addonService = new Array();
-                $("input:checkbox[name=addon]:checked").each(function () {
-                    addonService.push($(this).val());
-                });
-
-                var proposal = { 
-                    'MarketStyle': $('#marketstylevalue').val(),
-                    'MarketType': $('#markettypevalue').val(),
-                    'Location': $('#ddlLocation').val(),
-                    'MarketScale': $('#ddlMarketScale').val(),
-                    'Tent': $('#ddlTent').val(),
-                    'Electricity': $('#ddlElectricity').val(),
-                    'WaterFacility': $('#ddlWaterFacility').val(),
-                    'CharingMode': $('#ddlCharingMode').val(),
-                    'BudgetLevel': $('#ddlBudgetLevel').val(),
-                    'AddonService': addonService,
-                    'Name':$('#proposalname').val()
-                };
+                var proposal = GetProposalValue();
                 $.ajax({
                     type: "POST",
                     url: "Proposal?handler=SaveProposal",
@@ -157,7 +140,31 @@
                     },
                 })
                 .done(function (result) {
-                    console.log(result);
+                    window.location.href = "@Url.Page("/Documents")";
+                });
+            });
+
+            $('#btnReview').click(function () {
+                var proposal = GetProposalValue();
+                $.ajax({
+                    type: "POST",
+                    url: "Proposal?handler=SaveTempProposal",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(proposal),
+                    headers: {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                })
+                .done(function (result) {
+                    if (result.Code == 'error') {
+
+                    }
+                    else {
+                        var tempProposalId= result.Message;
+                            window.location.href = '/Preview?tempId=' + tempProposalId;
+                    }
+                    
                 });
             });
         });
@@ -223,7 +230,6 @@
 
             document.getElementById('marketstylevalue').value = selectedButton.value;
         }
-
         function OnMarketTypeSelect(value) {
             let allButtons = document.querySelectorAll('.markettype button');
             allButtons.forEach(function (ele) { ele.style.backgroundColor = '#007bff'; });
@@ -232,6 +238,27 @@
             selectedButton.style.backgroundColor = '#bf5422';
 
             document.getElementById('markettypevalue').value = selectedButton.value;
+        }
+        function GetProposalValue()
+        {
+            var addonService = new Array();
+            $("input:checkbox[name=addon]:checked").each(function () {
+                addonService.push($(this).val());
+            });
+            var proposal = {
+                'MarketStyle': $('#marketstylevalue').val(),
+                'MarketType': $('#markettypevalue').val(),
+                'Location': $('#ddlLocation').val(),
+                'MarketScale': $('#ddlMarketScale').val(),
+                'Tent': $('#ddlTent').val(),
+                'Electricity': $('#ddlElectricity').val(),
+                'WaterFacility': $('#ddlWaterFacility').val(),
+                'CharingMode': $('#ddlCharingMode').val(),
+                'BudgetLevel': $('#ddlBudgetLevel').val(),
+                'AddonService': addonService,
+                'Name': $('#proposalname').val()
+            };
+            return proposal;
         }
 
     </script>

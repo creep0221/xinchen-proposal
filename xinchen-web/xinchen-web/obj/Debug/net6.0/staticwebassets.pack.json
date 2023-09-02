@@ -25,12 +25,140 @@
       "PackagePath": "staticwebassets\\images\\document_887997.png"
     },
     {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\location\\01huashan.jpg",
+      "PackagePath": "staticwebassets\\images\\location\\01huashan.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\location\\02shonshan.jpg",
+      "PackagePath": "staticwebassets\\images\\location\\02shonshan.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\location\\03yuanshan.jpg",
+      "PackagePath": "staticwebassets\\images\\location\\03yuanshan.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\location\\04bottlecap.png",
+      "PackagePath": "staticwebassets\\images\\location\\04bottlecap.png"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\location\\05kishuan.jpg",
+      "PackagePath": "staticwebassets\\images\\location\\05kishuan.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\marketstyle\\01animalforest.jpg",
+      "PackagePath": "staticwebassets\\images\\marketstyle\\01animalforest.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\marketstyle\\02luxuryParty.jpg",
+      "PackagePath": "staticwebassets\\images\\marketstyle\\02luxuryParty.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\marketstyle\\03artisticFresh.jpg",
+      "PackagePath": "staticwebassets\\images\\marketstyle\\03artisticFresh.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\marketstyle\\04crossCulture.jpg",
+      "PackagePath": "staticwebassets\\images\\marketstyle\\04crossCulture.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\marketstyle\\05outdoor.jpg",
+      "PackagePath": "staticwebassets\\images\\marketstyle\\05outdoor.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\marketstyle\\06taiwanese.jpg",
+      "PackagePath": "staticwebassets\\images\\marketstyle\\06taiwanese.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\markettype\\artist\\01.jpg",
+      "PackagePath": "staticwebassets\\images\\markettype\\artist\\01.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\markettype\\artist\\02.jpg",
+      "PackagePath": "staticwebassets\\images\\markettype\\artist\\02.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\markettype\\artist\\03.jpg",
+      "PackagePath": "staticwebassets\\images\\markettype\\artist\\03.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\markettype\\artist\\04.jpeg",
+      "PackagePath": "staticwebassets\\images\\markettype\\artist\\04.jpeg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\markettype\\artist\\05.jpeg",
+      "PackagePath": "staticwebassets\\images\\markettype\\artist\\05.jpeg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\markettype\\artist\\06.jpeg",
+      "PackagePath": "staticwebassets\\images\\markettype\\artist\\06.jpeg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\markettype\\handmade\\01.jpg",
+      "PackagePath": "staticwebassets\\images\\markettype\\handmade\\01.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\markettype\\handmade\\02.jpg",
+      "PackagePath": "staticwebassets\\images\\markettype\\handmade\\02.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\markettype\\handmade\\03.jpg",
+      "PackagePath": "staticwebassets\\images\\markettype\\handmade\\03.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\markettype\\handmade\\04.jpg",
+      "PackagePath": "staticwebassets\\images\\markettype\\handmade\\04.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\markettype\\handmade\\05.jpg",
+      "PackagePath": "staticwebassets\\images\\markettype\\handmade\\05.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\markettype\\streetfood\\01.jpg",
+      "PackagePath": "staticwebassets\\images\\markettype\\streetfood\\01.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\markettype\\streetfood\\02.jpg",
+      "PackagePath": "staticwebassets\\images\\markettype\\streetfood\\02.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\markettype\\streetfood\\03.jpeg",
+      "PackagePath": "staticwebassets\\images\\markettype\\streetfood\\03.jpeg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\markettype\\streetfood\\04.jpg",
+      "PackagePath": "staticwebassets\\images\\markettype\\streetfood\\04.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\markettype\\streetfood\\05.jpeg",
+      "PackagePath": "staticwebassets\\images\\markettype\\streetfood\\05.jpeg"
+    },
+    {
       "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\paperwork_9874793.png",
       "PackagePath": "staticwebassets\\images\\paperwork_9874793.png"
     },
     {
-      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\proposalimages\\01animalforest.jpg",
-      "PackagePath": "staticwebassets\\images\\proposalimages\\01animalforest.jpg"
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\scale\\01large.jpg",
+      "PackagePath": "staticwebassets\\images\\scale\\01large.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\scale\\02medium.jpg",
+      "PackagePath": "staticwebassets\\images\\scale\\02medium.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\scale\\03small.jpg",
+      "PackagePath": "staticwebassets\\images\\scale\\03small.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\tent\\01regular.jpg",
+      "PackagePath": "staticwebassets\\images\\tent\\01regular.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\tent\\02wood.jpg",
+      "PackagePath": "staticwebassets\\images\\tent\\02wood.jpg"
+    },
+    {
+      "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\images\\tent\\03others.jpg",
+      "PackagePath": "staticwebassets\\images\\tent\\03others.jpg"
     },
     {
       "Id": "C:\\Source Code\\xinchen-proposal-1\\xinchen-web\\xinchen-web\\wwwroot\\js\\site.js",

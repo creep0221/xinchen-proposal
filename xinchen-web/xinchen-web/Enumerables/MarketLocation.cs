@@ -4,6 +4,7 @@ namespace xinchen_web.Enumerables
 {
     public enum MarketLocation
     {
+        [Description("無")]
         None = 0,
         /// <summary>
         /// 華山1914文化創意產業園區室內

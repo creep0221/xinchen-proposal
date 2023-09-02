@@ -40,7 +40,7 @@
         {
                 var ddlId = "ddl" + proposal.Id;
 
-            <div class="document-item">
+            <div class="document-item" id="@proposal.Id">
                 <img src="@Url.Content("~/images/paperwork_9874793.png")" alt="Button Icon">
                 <span>@proposal.Name</span>
                 <div>
@@ -59,6 +59,12 @@
         $(document).ready(function () {
             $('#divNew').click(function () {
                 window.location.href = "@Url.Page("/Proposal")";
+            });
+
+            $('.document-item').click(function () {
+                var proposalId = $(this).attr('id');
+                var url = '/Preview?Id=' + proposalId;
+                window.open(url);
             })
         });
     </script>

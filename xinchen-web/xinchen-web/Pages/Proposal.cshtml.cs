@@ -65,31 +65,26 @@ namespace xinchen_web.Pages
 
         public IActionResult OnPostSaveProposal([FromBody] Proposal proposal)
         {
-            ClaimsPrincipal cp = HttpContext.User;
-            if (!cp.Identity.IsAuthenticated)
-                return new JsonResult("請重新登入");
-
-            List<Claim> claims = cp.Claims.ToList<Claim>();
-            string userId = claims.Single<Claim>(option => option.Type == "UserId").Value;
-            var user = _mongoSvc.Get(Builders<User>.Filter.Eq(x => x.Id, userId)).FirstOrDefault();
-
-            if (user == null)
-                return new JsonResult("請重新登入");
+            User user = null;
+            if (!TryValidateUser(out user))
+            {
+                return new JsonResult(new ResponseMessage() { Code = "error", Message = "請重新登入" });
+            }
 
             if (!IsProposalValid(proposal))
             {
-                return new JsonResult("企劃書內容不正確");
+                return new JsonResult(new ResponseMessage() { Code = "error", Message = "企劃書內容不正確" });
             }
             else
             {
                 _mongoSvc.Create(proposal);
                 UserProposal userProposal = null;
-                userProposal = _mongoSvc.Get<UserProposal>(Builders<UserProposal>.Filter.Eq(x => x.UserId, userId)).FirstOrDefault();
+                userProposal = _mongoSvc.Get<UserProposal>(Builders<UserProposal>.Filter.Eq(x => x.UserId, user.Id)).FirstOrDefault();
                 if (userProposal == null)
                 {
                     userProposal = new UserProposal()
                     {
-                        UserId = userId,
+                        UserId = user.Id,
                         ProposalId = new List<string>() { proposal.Id }
                     };
                     _mongoSvc.Create(userProposal);
@@ -97,15 +92,45 @@ namespace xinchen_web.Pages
                 else
                 {
                     userProposal.ProposalId.Add(proposal.Id);
-                    _mongoSvc.ReplaceOneAsync(Builders<UserProposal>.Filter.Eq(x => x.UserId, userId), userProposal);
+                    _mongoSvc.ReplaceOne(Builders<UserProposal>.Filter.Eq(x => x.UserId, user.Id), userProposal);
                 }
             }
-
-            return Redirect("/Documents");
-            
+            return new JsonResult(new ResponseMessage() { Code = "success", Message = "" });
         }
 
+        public IActionResult OnPostSaveTempProposal([FromBody] Proposal proposal)
+        {
+            User user = null;
+            if (!TryValidateUser(out user))
+            {
+                return new JsonResult(new ResponseMessage() { Code = "error", Message = "請重新登入" });
+            }
 
+            if (!IsProposalValid(proposal))
+            {
+                return new JsonResult(new ResponseMessage() { Code = "error", Message = "企劃書內容不正確" });
+            }
+            else
+            {
+                var userTempProposal = _mongoSvc.Get(Builders<UserTempProposal>.Filter.Eq(x => x.UserId, user.Id)).FirstOrDefault();
+                if (userTempProposal == null)
+                {
+                    userTempProposal = new UserTempProposal()
+                    {
+                        UserId = user.Id,
+                        Proposal = proposal
+                    };
+                    _mongoSvc.Create(userTempProposal);
+                }
+                else
+                {
+                    userTempProposal.Proposal = proposal;
+                    _mongoSvc.ReplaceOne(Builders<UserTempProposal>.Filter.Eq(x => x.UserId, user.Id), userTempProposal);
+                }
+                return new JsonResult(new ResponseMessage() { Code = "success", Message = userTempProposal.Id });
+            }
+            
+        }
         public JsonResult OnGetSubItems(int locationId)
         {
             var itemsByLocation = _marketSetting.MarketDetail.Where(x => x.Id == locationId).FirstOrDefault();
@@ -127,6 +152,23 @@ namespace xinchen_web.Pages
 
         }
 
+        private bool TryValidateUser(out User user)
+        {
+            user = null;
+            ClaimsPrincipal cp = HttpContext.User;
+            if (!cp.Identity.IsAuthenticated)
+            {
+                return false;
+            }
+
+            List<Claim> claims = cp.Claims.ToList<Claim>();
+            string userId = claims.Single<Claim>(option => option.Type == "UserId").Value;
+            user = _mongoSvc.Get(Builders<User>.Filter.Eq(x => x.Id, userId)).FirstOrDefault();
+
+            if (user == null)
+                return false;
+            else return true;
+        }
         private bool IsProposalValid(Proposal proposal)
         {
             if (proposal == null) { return false; }
@@ -142,5 +184,6 @@ namespace xinchen_web.Pages
                 return false;
             else return true;
         }
+
     }
 }

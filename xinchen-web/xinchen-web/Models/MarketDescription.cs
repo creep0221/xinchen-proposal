@@ -5,16 +5,32 @@ namespace xinchen_web.Models
 {
     public class MarketDescription
     {
-        public Dictionary<MarketStyle, MarketStyleDescription> StyleDescription { get; private set; }
-        public Dictionary<MarketType, MarketTypeDescription> TypeDescription { get; private set; }
+        public Dictionary<short, MarketStyleDescription> StyleDesc { get; private set; }
+        public Dictionary<short, MarketTypeDescription> TypeDesc { get; private set; }
+        public Dictionary<short, MarketLocationDescription> LocationDesc { get; private set; }
+        public Dictionary<short, MarketScaleDescription> ScaleDesc { get; private set; }
+        public Dictionary<short, TentDescription> TentDesc { get; private set; }
+        public Dictionary<short, ElectricityDescription> ElectricityDesc { get; private set; }
+        public Dictionary<short, WaterFacilityDescription> WaterFacilityDesc { get; private set; }
+        public Dictionary<short, CharingModeDescription> CharingModeDesc { get; private set; }
+        public Dictionary<short, BudgetLevelDescription> BudgetLevelDesc { get; private set; }
+
 
         public MarketDescription()
         {
             InitStyleDescription();
+            InitTypeDescription();
+            InitLocationDescription();
+            InitScaleDescription();
+            InitTentDescription();
+            InitElectricityDescription();
+            InitWaterFacilityDescription();
+            InitCharingModeDescription();
+            InitBudgetLevelDescription();
         }
         private void InitStyleDescription()
         {
-            StyleDescription = new Dictionary<MarketStyle, MarketStyleDescription>();
+            StyleDesc = new Dictionary<short, MarketStyleDescription>();
 
             var animalForestStyle = new MarketStyleDescription();
             animalForestStyle.MarketStyleTitle = @"動物森林手作市集";
@@ -84,9 +100,9 @@ namespace xinchen_web.Models
 生態保育分享： 我們特別邀請生態專家進行講座，分享有關保護動植物、森林環境等議題，以提高大眾對自然保育的認識。
 </p>
 ";
-            StyleDescription.Add(MarketStyle.AnimalForest, animalForestStyle);
+            StyleDesc.Add(1, animalForestStyle);
 
-            var luxuryPartyStyle= new MarketStyleDescription();
+            var luxuryPartyStyle = new MarketStyleDescription();
             luxuryPartyStyle.MarketStyleTitle = "奢華派對藝品市集";
             luxuryPartyStyle.StyleImagePath = "~/images/marketstyle/02luxuryParty.jpg";
             luxuryPartyStyle.MarketStyleGoal = @"
@@ -163,7 +179,7 @@ namespace xinchen_web.Models
 慈善拍賣： 活動最後一天舉辦慈善拍賣，所得收入將捐贈給當地藝術教育機構，支持藝術的培育和發展。 
 </p>
 ";
-            StyleDescription.Add(MarketStyle.LuxuryParty, luxuryPartyStyle);
+            StyleDesc.Add(2, luxuryPartyStyle);
 
             var artisticFreshStyle = new MarketStyleDescription();
             artisticFreshStyle.MarketStyleTitle = "藝文清新風市集";
@@ -234,7 +250,7 @@ namespace xinchen_web.Models
 美食與自然體驗： 市集周邊將設有美食區，提供健康、清新的美食選擇，同時也可以結合自然體驗，如植物種植、自然導覽等，使活動更加與自然環境融合。 
 </p> 
 ";
-            StyleDescription.Add(MarketStyle.ArtisticFresh, artisticFreshStyle);
+            StyleDesc.Add(3, artisticFreshStyle);
 
             var crossCultureStyle = new MarketStyleDescription();
             crossCultureStyle.MarketStyleTitle = "異國文化風市集";
@@ -305,7 +321,7 @@ namespace xinchen_web.Models
 時尚服飾秀： 舉辦主題服飾秀，將展示日系和美系的時尚風格，呈現兩種異國風文化在服飾方面的美麗融合。 
 </p>
 ";
-            StyleDescription.Add(MarketStyle.CrossCulture, crossCultureStyle);
+            StyleDesc.Add(4, crossCultureStyle);
 
             var outdoorStyle = new MarketStyleDescription();
             outdoorStyle.MarketStyleTitle = "Outdoor野營風";
@@ -385,7 +401,7 @@ namespace xinchen_web.Models
 美食與自然體驗： 在戶外營地周邊設置美食區，提供營火烤肉、野外烹飪等自然體驗，讓參與者在享受美食的同時，感受自然的生活方式。 
 </p>
 ";
-            StyleDescription.Add(MarketStyle.Outdoor, outdoorStyle);
+            StyleDesc.Add(5, outdoorStyle);
 
             var taiwaneseStyle = new MarketStyleDescription();
             taiwaneseStyle.MarketStyleTitle = "台派風市集";
@@ -471,12 +487,12 @@ namespace xinchen_web.Models
 傳統市集氛圍： 在市集中重現傳統台灣市集的氛圍，設置攤位攤販，展示傳統商品，讓參與者回味舊時的台灣市集風光。 
 </p>
 ";
-            StyleDescription.Add(MarketStyle.Taiwanese, taiwaneseStyle);
+            StyleDesc.Add(6, taiwaneseStyle);
 
         }
         private void InitTypeDescription()
         {
-            TypeDescription = new Dictionary<MarketType, MarketTypeDescription>();
+            TypeDesc = new Dictionary<short, MarketTypeDescription>();
             var handmadeCreativityType = new MarketTypeDescription();
             handmadeCreativityType.Description = @"
 <p>
@@ -490,37 +506,41 @@ namespace xinchen_web.Models
 1. JIEGEM 姊的珠寶盒 
 </p>
 <div>
-    <img src=""/images/markettype/handmade/01.jpg""
+    <img src=""/images/markettype/handmade/01.jpg"" title=""JIEGEM 姊的珠寶盒"" >
 </div>
+<br />
 <p>
 2. Kotori 小鳥日本飾品專門店
 </p>
 <div>
-    <img src=""/images/markettype/handmade/02.jpg""
+    <img src=""/images/markettype/handmade/02.jpg"" title=""Kotori 小鳥日本飾品專門店"" >
 </div>
+<br />
 <p>
 3. °○敲級口愛chaogikoi°○串珠珠 
 </p>
 <div>
-    <img src=""/images/markettype/handmade/03.jpg""
+    <img src=""/images/markettype/handmade/03.jpg"" title=""°○敲級口愛chaogikoi°○串珠珠 "" />
 </div>
+<br />
 <p>
 4. 織妍CHIYEN 
 </p>
 <div>
-    <img src=""/images/markettype/handmade/04.jpg""
+    <img src=""/images/markettype/handmade/04.jpg"" title=""織妍CHIYEN"" />
 </div>
 <p>
 5. 奧羅拉商行
 </p>
+<br />
 <div>
-    <img src=""/images/markettype/handmade/05.jpg""
+    <img src=""/images/markettype/handmade/05.jpg"" title=""奧羅拉商行"" />
 </div>
 <p>
 ※品牌圖示皆為示意圖，實際依招收品牌為主，圖示版權方為品牌本身非主辦單位所有 
 </p>
 ";
-            TypeDescription.Add(MarketType.HandmadeCreativity, handmadeCreativityType);
+            TypeDesc.Add(1, handmadeCreativityType);
 
             var artistPerformType = new MarketTypeDescription();
             artistPerformType.Description = @"
@@ -542,45 +562,51 @@ namespace xinchen_web.Models
 <p>
 1. JIEGEM 姊的珠寶盒 
 </p>
+<br />
 <div>
-    <img src=""/images/markettype/artist/01.jpg""
+    <img src=""/images/markettype/artist/01.jpg"" title=""JIEGEM 姊的珠寶盒 "" />
 </div>
 <p>
+<br />
 2. Kotori 小鳥日本飾品專門店
 </p>
 <div>
-    <img src=""/images/markettype/artist/02.jpg""
+    <img src=""/images/markettype/artist/02.jpg"" title=""Kotori 小鳥日本飾品專門店"" />
 </div>
 <p>
+<br />
 3. 陶炑
 </p>
 <div>
-    <img src=""/images/markettype/artist/03.jpg""
+    <img src=""/images/markettype/artist/03.jpg"" title=""陶炑"" />
 </div>
 <p>
+<br />
 4. Soul Irrigation靈魂灌溉所
 </p>
 <div>
-    <img src=""/images/markettype/artist/04.jpeg""
+    <img src=""/images/markettype/artist/04.jpeg"" title=""Soul Irrigation靈魂灌溉所"" />
 </div>
 <p>
+<br />
 5. 墨染一色
 </p>
 <div>
-    <img src=""/images/markettype/artist/05.jpeg""
+    <img src=""/images/markettype/artist/05.jpeg"" title=""墨染一色"" />
 </div>
 <p>
+<br />
 6. 人中人株式會社
 </p>
 <div>
-    <img src=""/images/markettype/artist/06.jpeg""
+    <img src=""/images/markettype/artist/06.jpeg"" title=""人中人株式會社"" />
 </div>
 <p>
 ※品牌圖示皆為示意圖，實際依招收品牌為主，圖示版權方為品牌本身非主辦單位所有 
 </p>
 
 ";
-            TypeDescription.Add(MarketType.ArtistPerform, artistPerformType);
+            TypeDesc.Add(2, artistPerformType);
 
             var streetFoodType = new MarketTypeDescription();
             streetFoodType.Description = @"
@@ -600,37 +626,381 @@ namespace xinchen_web.Models
 1. °○敲級口愛chaogikoi°○串珠珠
 </p>
 <div>
-    <img src=""/images/markettype/streetfood/01.jpg""
+    <img src=""/images/markettype/streetfood/01.jpg"" title=""°○敲級口愛chaogikoi°○串珠珠"" />
 </div>
+<br />
 <p>
 2. 織妍CHIYEN
 </p>
 <div>
-    <img src=""/images/markettype/streetfood/02.jpg""
+    <img src=""/images/markettype/streetfood/02.jpg"" title=""織妍CHIYEN"" />
 </div>
 <p>
+<br />
 3. 綺楽燒
 </p>
 <div>
-    <img src=""/images/markettype/streetfood/03.jpeg""
+    <img src=""/images/markettype/streetfood/03.jpeg"" title=""綺楽燒"" />
 </div>
 <p>
+<br />
 4. 犬首燒
 </p>
 <div>
-    <img src=""/images/markettype/streetfood/04.jpg""
+    <img src=""/images/markettype/streetfood/04.jpg"" title=""犬首燒"" />
 </div>
 <p>
+<br />
 5. J主廚特製軟法三明治
 </p>
 <div>
-    <img src=""/images/markettype/streetfood/05.jpeg""
+    <img src=""/images/markettype/streetfood/05.jpeg"" title=""J主廚特製軟法三明治"" />
 </div>
 <p>
 ※品牌圖示皆為示意圖，實際依招收品牌為主，圖示版權方為品牌本身非主辦 
 </p>
 ";
-            TypeDescription.Add(MarketType.StreetFood, streetFoodType);
+            TypeDesc.Add(3, streetFoodType);
+        }
+        private void InitLocationDescription()
+        {
+            LocationDesc = new Dictionary<short, MarketLocationDescription>();
+            var huaShanIndoor = new MarketLocationDescription();
+            huaShanIndoor.Description = @"
+<div>
+    <img src=""/images/location/01huashan.jpg"" title=""華山1914文化創意產業園區"" />
+</div>
+<p>
+地址: 台北市中正區八德路一段1號 
+</p>
+<p>
+特色: 是位於臺灣臺北市中正區的複合式文化展演園區。前身為「台北酒廠」，為臺北市市定古蹟；
+經多年閒置，在1999年起成為提供給藝文界、非營利組織及個人使用的藝術展覽、音樂表演等文化活動場地，成為臺北市西區重要的藝文展演場所。 
+</p>
+<p>
+※照片為示意圖，版權方為場地所有非主辦單位 
+</p>
+";
+            LocationDesc.Add(1, huaShanIndoor);
+
+            var huaShaOutdoor = new MarketLocationDescription();
+            huaShaOutdoor.Description = @"
+<div>
+    <img src=""/images/location/01huashan.jpg"" title=""華山1914文化創意產業園區"" />
+</div>
+<p>
+地址: 台北市中正區八德路一段1號 
+</p>
+<p>
+特色: 是位於臺灣臺北市中正區的複合式文化展演園區。前身為「台北酒廠」，為臺北市市定古蹟；經多年閒置，在1999年起成為提供給藝文界、非營利組織及個人使用的藝術展覽、音樂表演等文化活動場地，成為臺北市西區重要的藝文展演場所。 
+</p>
+<p>
+※照片為示意圖，版權方為場地所有非主辦單位 
+</p>
+";
+            LocationDesc.Add(2, huaShaOutdoor);
+
+            var songShanIndoor = new MarketLocationDescription();
+            songShanIndoor.Description = @"
+<div>
+    <img src=""/images/location/02shonshan.jpg"" title=""松山文創園區"" />
+</div>
+<p>
+地址: 台北市信義區光復南路133號 
+</p>
+<p>
+特色: 做為一個國際型的文創聚落，從扶植原創的精神出發，鼓勵創新性與實驗性。從創業育成到建立品牌，從核心創作到商業運用，從產業進駐到資源連結，提供創作者群聚，實現從實驗創新、設計發想、測試製作到面對群眾與國際鏈結的歷程，松山文創園區成為台灣重要的創意樞紐，更是國際性的文創聚落，民眾可在此平台參與藝術與原創，體驗無限創意。 
+</p>
+<p>
+※照片為示意圖，版權方為場地所有非主辦單位 
+</p>
+";
+            LocationDesc.Add(3, songShanIndoor);
+
+            var songShanOurdoor = new MarketLocationDescription();
+            songShanOurdoor.Description = @"
+<div>
+    <img src=""/images/location/02shonshan.jpg"" title=""松山文創園區"" />
+</div>
+<p>
+地址: 台北市信義區光復南路133號 
+</p>
+<p>
+特色: 做為一個國際型的文創聚落，從扶植原創的精神出發，鼓勵創新性與實驗性。從創業育成到建立品牌，從核心創作到商業運用，從產業進駐到資源連結，提供創作者群聚，實現從實驗創新、設計發想、測試製作到面對群眾與國際鏈結的歷程，松山文創園區成為台灣重要的創意樞紐，更是國際性的文創聚落，民眾可在此平台參與藝術與原創，體驗無限創意。 
+</p>
+<p>
+※照片為示意圖，版權方為場地所有非主辦單位 
+</p>
+";
+            LocationDesc.Add(4, songShanOurdoor);
+
+            var yuanShanExhibition = new MarketLocationDescription();
+            yuanShanExhibition.Description = @"
+<div>
+    <img src=""/images/location/03yuanshan.jpg"" title=""圓山花博"" />
+</div>
+<p>
+地址: 臺北市中山區玉門街1號 
+</p>
+<p>
+特色: 位於台灣台北市中山區，捷運圓山站與美術公園之間，在2010年臺北國際花卉博覽會期間劃入展區，目前為花博公園的一部分，場地富有異國風情，廣場腹地大、草皮多，為北台北休閒重鎮。 
+</p>
+<p>
+※照片為示意圖，版權方為場地所有非主辦單位 
+</p>
+";
+            LocationDesc.Add(5, yuanShanExhibition);
+
+            var bottleCapFactoryIndoor = new MarketLocationDescription();
+            bottleCapFactoryIndoor.Description = @"
+<div>
+    <img src=""/images/location/04bottlecap.png"" title=""瓶蓋工廠"" />
+</div>
+<p>
+地址: 台北市南港區南港路二段13號 
+</p>
+<p>
+特色: 歷史建築內的創意中心，提供共享辦公室、在地新創園區及展覽空間。 
+</p>
+<p>
+※照片為示意圖，版權方為場地所有非主辦單位 
+</p>
+";
+            LocationDesc.Add(6, bottleCapFactoryIndoor);
+
+            var bottleCapFactoryOutdoor = new MarketLocationDescription();
+            bottleCapFactoryOutdoor.Description = @"
+<div>
+    <img src=""/images/location/04bottlecap.png"" title=""瓶蓋工廠"" />
+</div>
+<p>
+地址: 台北市南港區南港路二段13號 
+</p>
+<p>
+特色: 歷史建築內的創意中心，提供共享辦公室、在地新創園區及展覽空間。 
+</p>
+<p>
+※照片為示意圖，版權方為場地所有非主辦單位 
+</p>
+";
+            LocationDesc.Add(7, bottleCapFactoryOutdoor);
+
+            var kishuAn = new MarketLocationDescription();
+            kishuAn.Description = @"
+<div>
+    <img src=""/images/location/05kishuan.jpg"" title=""紀州庵文學森林"" />
+</div>
+<p>
+地址: 台北市中正區同安街 107 號 
+</p>
+<p>
+特色: 「紀州庵」初建於1917年，原為平松家族經營的日式料亭，因緊鄰新店溪畔，景色宜人，成為城南居民的生活重心。1950 年代，二戰後的紀州庵轉為公務人員眷舍，小說家王文興曾居於此，《家變》的部分場景便源於此地。1970 年代起，純文學、爾雅、洪範、遠流等出版社也不約而同的在城南建立。 
+</p>
+<p>
+※照片為示意圖，版權方為場地所有非主辦單位 
+</p>
+";
+            LocationDesc.Add(8, kishuAn);
+
+        }
+        private void InitScaleDescription()
+        {
+            ScaleDesc = new Dictionary<short, MarketScaleDescription>();
+            var large = new MarketScaleDescription();
+            large.Description = @"
+<div>
+    <img src=""/images/scale/01large.jpg"" />
+</div>
+<p>
+這場市集是一場規模龐大、熱鬧非凡的盛會，超過100個攤位匯聚在一起，帶來了多元的體驗和無盡的驚喜。
+漫步在市集中，你將穿梭於五光十色的攤位之間，感受著來自不同領域的創意和活力。
+無論是手工藝品、美食饗宴、藝術表演，還是各種特色商品，這裡都是一個集合了多種文化、風格和味道的精彩世界。
+無論你是探索者、美食家還是藝術愛好者，這場大型市集將成為一個無限可能的探索之地，讓你在每個攤位背後，都發現一個新奇的故事和驚艷的驚喜。 
+</p>
+";
+            ScaleDesc.Add(1, large);
+            
+            var medium = new MarketScaleDescription();
+            medium.Description = @"
+<div>
+    <img src=""/images/scale/02medium.jpg"" />
+</div>
+<p>
+這場市集以中型規模展現了獨特的魅力，匯聚了30到100個多樣性的攤位。這個市集充滿了活力，你可以在其中尋找到各種類型的商品和體驗。
+從手工藝品到美食、從文創設計到藝術表演，這個中型市集將為你帶來一場多元且充滿驚喜的探索之旅。
+無論你是在尋找獨特的禮物，品味美味的美食，還是欣賞藝術的表現，這場市集都能夠滿足你的各種需求，帶來一個充滿活力和多彩的體驗。
+</p>
+";
+            ScaleDesc.Add(2, medium);
+            
+            var small = new MarketScaleDescription();
+            large.Description = @"
+<div>
+    <img src=""/images/scale/03small.jpg"" />
+</div>
+<p>
+這場小型市集雖然攤位數量不多，卻充滿了溫馨和親密感。
+在這個精心策劃的市集中，你可以輕鬆地漫步，一邊欣賞著手工藝品、文創商品，一邊品味著精緻的小吃和特色美食。
+儘管規模較小，這場市集卻讓你更能深入感受每個攤位的特色和創意，彷彿是與創作者和商家進行一次親切的互動。
+這個小型市集將為你帶來一份溫暖的社區氛圍和舒適的購物體驗，讓你在細微之處感受到愉悅和滿足。 
+</p>
+";
+            ScaleDesc.Add(3, small);
+        }
+        private void InitTentDescription()
+        {
+            TentDesc = new Dictionary<short, TentDescription>();
+            var regular = new TentDescription();
+            regular.Description = @"
+<div>
+    <img src=""/images/tent/01regular.jpg"" />
+</div>
+<p>
+此市集以一般帳篷為主要攤位呈現，防水度佳，市集中的一般帳篷為整個活動場地帶來了舒適和實用性。
+這些帳篷被巧妙地佈置在攤位之間，為參與者提供了遮陽、遮雨和休息的地方。 
+</p>
+";
+            TentDesc.Add(1, regular);
+
+            var wood = new TentDescription();
+            wood.Description = @"
+<div>
+    <img src=""/images/tent/02wood.jpg"" />
+</div>
+<p>
+此市集以木架為主要攤位呈現，美觀且藝文感強烈市集中的藝文木架為整個場景注入了藝術的氛圍和風采。
+這些木架被巧妙地設置在市集的特定區域，
+用來展示各種文創作品、藝術品、手工藝品和繪畫作品。
+木架可能具有不同的高度和尺寸，以展示不同種類和尺寸的作品。 
+</p>
+";
+            TentDesc.Add(2, wood);
+
+            var others = new TentDescription();
+            others.Description = @"
+<div>
+    <img src=""/images/tent/03others.jpg"" />
+</div>
+<p>
+此市集需另外討論攤位呈現，特色感強烈，無論你是藝術愛好者還是只是尋找獨特禮物的參與者，
+這些特色布置都能夠讓你深入了解當地藝術家的才華和創意，並且在市集的氛圍中感受到藝術的力量和情感。
+這些布置為市集增添了一份獨特的文化韻味，成為市集不可或缺的一部分 
+</p>
+";
+            TentDesc.Add(3, others);
+        }
+        private void InitElectricityDescription()
+        {
+            ElectricityDesc = new Dictionary<short, ElectricityDescription>();
+            var regular = new ElectricityDescription();
+            regular.Description = @"
+<p>
+在這個市集中，電力供應是為每攤位提供了一般的電力資源。
+每攤位都能夠獲得2A的電力供應，這足以支持攤位的燈光、音響和其他基本的電器設備運作。
+這種供電方式確保了每個攤位都有足夠的能量來展示他們的商品、進行互動和提供服務，同時也確保市集整體的電力分配均衡和穩定。
+這樣的電力配置使得每個攤位都能夠在營運中保持正常運作，讓參與者能夠在舒適的環境中欣賞、購物和互動。 
+</p>
+";
+            ElectricityDesc.Add(1, regular);
+
+            var heavy= new ElectricityDescription();
+            heavy.Description = @"
+<p>
+這場市集為特定領域（餐飲或表演）的攤位提供了強大的供電支援，以應對更多的電器需求。每個擁有重型電力的攤位都能夠獲得更大的電力資源，以確保他們的活動和需求得以順利進行。 
+</p>
+<p>
+對於餐飲攤位而言，這意味著他們可以運行更多的廚房設備，如電磁爐、烤箱、攪拌機等，以提供更多種類的美食。這種重型電力供應使得廚房操作更加順暢，可以在忙碌的環境中輕鬆應對烹飪需求，為參觀者帶來更多美味的選擇。 
+</p>
+<p>
+對於表演攤位，這種電力供應則能夠支持更多的音響和燈光設備，以創造出更震撼的演出效果。樂隊、歌手、舞者和其他表演者可以更自由地運用技術，打造出引人入勝的演出現場，讓觀眾沉浸在音樂和表演的世界中。 
+</p>
+<p>
+這樣的供電方式為特定領域的攤位提供了更多的彈性和能量，確保了他們能夠在市集中充分展現他們的才華和創意。同時，也為參與者帶來了更豐富的體驗，讓他們可以享受到更多種類的美食和表演，共同創造出一場難忘的活動。 
+</p>
+";
+            ElectricityDesc.Add(2, heavy);
+        }
+        private void InitWaterFacilityDescription()
+        {
+            WaterFacilityDesc = new Dictionary<short, WaterFacilityDescription>();
+            var withWater = new WaterFacilityDescription();
+            withWater.Description = @"
+<p>
+此市集有供應洗滌用水，供各攤友使用 
+</p>
+";
+            WaterFacilityDesc.Add(1, withWater);
+
+            var withoutWater = new WaterFacilityDescription();
+            withoutWater.Description = @"
+<p>
+此市集無供應洗滌用水，供各攤友使用 
+</p>
+";
+            WaterFacilityDesc.Add(2, withoutWater);
+        }
+        private void InitCharingModeDescription()
+        {
+            CharingModeDesc = new Dictionary<short, CharingModeDescription>();
+            var free = new CharingModeDescription();
+            free.Description = @"
+<p>
+此市集無收取費用為攤友免費擺攤，可能提供車馬費。 
+</p>
+";
+            CharingModeDesc.Add(1, free);
+
+            var charged= new CharingModeDescription();
+            charged.Description = @"
+<p>
+此市集收取費用為攤友付費擺攤，於活動開始前收取費用。 
+</p>
+";
+            CharingModeDesc.Add(2, charged);
+        }
+        private void InitBudgetLevelDescription()
+        {
+            BudgetLevelDesc = new Dictionary<short, BudgetLevelDescription>();
+            var lt30 = new BudgetLevelDescription();
+            lt30.Description = @"
+<p>
+小於30萬 
+</p>
+";
+            BudgetLevelDesc.Add(1, lt30);
+
+            var gt31lt50 = new BudgetLevelDescription();
+            gt31lt50.Description = @"
+<p>
+31~50萬 
+</p>
+";
+            BudgetLevelDesc.Add(2, gt31lt50);
+
+            var gt51lt80 = new BudgetLevelDescription();
+            gt51lt80.Description = @"
+<p>
+51~80萬 
+</p>
+";
+            BudgetLevelDesc.Add(3, gt51lt80);
+
+            var gt81lt100 = new BudgetLevelDescription();
+            gt81lt100.Description = @"
+<p>
+81~100萬 
+</p>
+";
+            BudgetLevelDesc.Add(4, gt81lt100);
+
+            var gt100 = new BudgetLevelDescription();
+            gt100.Description = @"
+<p>
+>100萬。 
+</p>
+";
+            BudgetLevelDesc.Add(5, gt100);
+
 
         }
     }
@@ -647,8 +1017,32 @@ namespace xinchen_web.Models
     {
         public string Description { get; set; }
     }
+    public class MarketLocationDescription
+    {
+        public string Description { get; set; }
+    }
+    public class MarketScaleDescription
+    {
+        public string Description { get; set; }
+    }
+    public class TentDescription
+    {
+        public string Description { get; set; }
+    }
 
-    public class LocationDescription
+    public class ElectricityDescription
+    {
+        public string Description { get; set; }
+    }
+    public class WaterFacilityDescription
+    {
+        public string Description { get; set; }
+    }
+    public class CharingModeDescription
+    {
+        public string Description { get; set; }
+    }
+    public class BudgetLevelDescription
     {
         public string Description { get; set; }
     }
