@@ -8,6 +8,7 @@ using xinchen_web.Helpers;
 using xinchen_web.Models;
 using xinchen_web.Services;
 using static System.Net.Mime.MediaTypeNames;
+using static xinchen_web.Pages.DocumentsModel;
 
 namespace xinchen_web.Pages
 {
@@ -63,5 +64,47 @@ namespace xinchen_web.Pages
             }
         }
 
+        public IActionResult OnPostSaveStatus([FromBody] StatusUpdate statusUpdate)
+        {
+            ClaimsPrincipal cp = HttpContext.User;
+            if (!cp.Identity.IsAuthenticated)
+                return new JsonResult(new ResponseMessage() { Code = "error", Message = "請重新登入" });
+            else
+            {
+                var proposal = _mongoSvc.Get(Builders<Proposal>.Filter.Eq(x => x.Id, statusUpdate.ProposalId)).FirstOrDefault();
+                if (proposal == null)
+                {
+                    return new JsonResult(new ResponseMessage() { Code = "error", Message = "企劃書發生錯誤，請重新登入" });
+                }
+                proposal.Status = Int16.Parse(statusUpdate.Status);
+                _mongoSvc.ReplaceOne(Builders<Proposal>.Filter.Eq(x => x.Id, statusUpdate.ProposalId), proposal);
+
+                return new JsonResult(new ResponseMessage() { Code = "success", Message = "" });
+            }
+        }
+
+        public IActionResult OnDelete([FromQuery] string proposalId)
+        {
+            ClaimsPrincipal cp = HttpContext.User;
+            if (!cp.Identity.IsAuthenticated)
+                return new JsonResult(new ResponseMessage() { Code = "error", Message = "請重新登入" });
+            else
+            {
+                var proposal = _mongoSvc.Get(Builders<Proposal>.Filter.Eq(x => x.Id, proposalId)).FirstOrDefault();
+                if (proposal == null)
+                {
+                    return new JsonResult(new ResponseMessage() { Code = "error", Message = "企劃書發生錯誤，請重新登入" });
+                }
+                _mongoSvc.Remove(Builders<Proposal>.Filter.Eq(x => x.Id, proposalId));
+
+                return new JsonResult(new ResponseMessage() { Code = "success", Message = "" });
+            }
+        }
+
+        public class StatusUpdate
+        {
+            public string ProposalId { get; set; }
+            public string Status { get; set; }
+        }
     }
 }

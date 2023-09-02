@@ -21,14 +21,14 @@
 <div class="document-box">
     @if (!hasProposal)
     {
-        <div id="divNew" class="document-item">
+        <div id="divNew" class="document-new">
             <img src="@Url.Content("~/images/checklist_2666505.png")" alt="Button Icon">
             <span>建立第一本企畫書</span>
         </div>
     }
     else if (allowCreateNew)
     {
-        <div id="divNew" class="document-item">
+        <div id="divNew" class="document-new">
             <img src="@Url.Content("~/images/checklist_2666505.png")" alt="Button Icon">
             <span>建立企畫書</span>
         </div>
@@ -38,13 +38,16 @@
     {
         foreach (var proposal in proposalList)
         {
-                var ddlId = "ddl" + proposal.Id;
-
             <div class="document-item" id="@proposal.Id">
                 <img src="@Url.Content("~/images/paperwork_9874793.png")" alt="Button Icon">
                 <span>@proposal.Name</span>
                 <div>
-                    <select id="ddlTent" name="SelectProposalStatus" asp-items="Model.SelectProposalStatus"></select>
+                    <select name="SelectProposalStatus">
+                        @foreach (var item in Model.SelectProposalStatus)
+                        {
+                            <option value="@item.Value" selected=@(item.Value == proposal.Status.ToString())>@item.Text</option>
+                        }
+                    </select>
                     <span class="button">刪除</span>
                 </div>
             </div>
@@ -54,18 +57,73 @@
     
 </div>
 
+<div id="divError">
+    
+</div>
 @section Scripts{
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#divNew').click(function () {
+            $('#divNew').click(function () {    
                 window.location.href = "@Url.Page("/Proposal")";
             });
 
-            $('.document-item').click(function () {
-                var proposalId = $(this).attr('id');
+            $('.document-item img').click(function () {
+                var proposalId = $(this).parents('div').attr('id');
                 var url = '/Preview?Id=' + proposalId;
                 window.open(url);
             })
+
+            $('.document-item select').change(function () {
+                var proposalId = $(this).parents('div').parents('div').attr('id');
+                var status = $(this).val();
+                var statusUpdate = {
+                    'ProposalId': proposalId,
+                    'Status': status
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "Documents?handler=SaveStatus",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify(statusUpdate),
+                    headers: {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                })
+                .done(function (result) {
+                    console.log(result);
+                    if (result.code == 'error') {
+                        $('#divError').html(result.message);
+                    }
+                });
+                
+            });
+            $('.document-item .button').click(function () {
+                var proceed = confirm('刪除後無法復原，確定繼續？');
+                if(!proceed) return;
+
+                var proposalId = $(this).parents('div').parents('div').attr('id');
+                $.ajax({
+                    type: "DELETE",
+                    url: 'Documents?proposalId=' + proposalId,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: proposalId,
+                    headers: {
+                        "RequestVerificationToken": '@GetAntiXsrfRequestToken()'
+                    },
+                })
+                    .done(function (result) {
+                        console.log(result);
+                        if (result.code == 'error') {
+                            $('#divError').html(result.message);
+                        }
+                        else {
+                            location.reload();
+                        }
+                    });
+            });
+
         });
     </script>
 }

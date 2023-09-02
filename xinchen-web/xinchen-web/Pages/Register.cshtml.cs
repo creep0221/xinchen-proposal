@@ -28,6 +28,7 @@ namespace xinchen_web.Pages
         public string Email { get; set; }
         public void OnGet()
         {
+            var a = HttpContext.Session.GetString("account");
         }
 
         public async Task OnPost()
@@ -50,7 +51,7 @@ namespace xinchen_web.Pages
                 PhoneNumber = PhoneNumber,
                 UpperAccount = account.ToUpper()
             };
-            var savedUser = await _mongoSvc.Create(user);
+            var savedUser = _mongoSvc.Create(user);
             var isRemember = HttpContext.Session.GetInt32("isRemember").HasValue ?
                                 (HttpContext.Session.GetInt32("isRemember").Value == 1 ? true : false) : false;
             await CreateAuthentication(account, savedUser.Id, isRemember);
@@ -63,7 +64,7 @@ namespace xinchen_web.Pages
         {
             var valid = true;
             errorMsg = string.Empty;
-            string phonenumberPattern = @"^[0-9]{8,}$";
+            string phonenumberPattern = @"^\+?\d{8,15}$";
             string mailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
 
             // 使用 Regex.Match 方法來進行驗證

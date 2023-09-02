@@ -41,3 +41,4 @@ C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\obj\Release\net6.0\ref
 C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\obj\Release\net6.0\xinchen-web.pdb
 C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\obj\Release\net6.0\xinchen-web.genruntimeconfig.cache
 C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\obj\Release\net6.0\ref\xinchen-web.dll
+C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\bin\Release\net6.0\marketsetting.json

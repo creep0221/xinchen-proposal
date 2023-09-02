@@ -36,7 +36,12 @@ button {
     vertical-align: middle;
     line-height: normal;
 }
-
+.nav-identity{
+    padding:20px;
+}
+div .title {
+    text-align: center;
+}
 .login-container {
     display: flex;
     justify-content: center;
@@ -45,13 +50,12 @@ button {
 }
 
 .login-box {
-    background-color: #fff;
+    background-color: #dadada;
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
-    background-color: #cacaca
 }
 .login-box label {
     width: 100px; /* 设置标签的固定宽度，可以根据需要调整 */
@@ -86,6 +90,8 @@ form {
 }
 
 input[type="text"],
+input[type="tel"],
+input[type="email"],
 input[type="password"] {
     padding: 10px;
     margin-bottom: 10px;
@@ -93,8 +99,35 @@ input[type="password"] {
     border-radius: 3px;
     font-size: 16px;
 }
+.div-register-value {
+    width: 350px;
+    height: 70px;
+}
 .document-box {
     display: flex;
+    flex-wrap: wrap;
+}
+.document-new {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center; /* 将文本居中对齐 */
+    display: flex; /* 使用 Flex 布局 */
+    flex-direction: column; /* 垂直排列图像和文本 */
+    align-items: center; /* 水平居中对齐图像和文本 */
+    background-color: #fff;
+    color: #1f1f1f;
+}
+.document-new img {
+    width: 150px;
+    height: 180px;
+    margin-top: 20px;
+}
+.document-new span {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .document-item {
     padding: 10px 20px;
@@ -109,6 +142,7 @@ input[type="password"] {
     background-color: #fff;
     color: #1f1f1f;
 }
+
 .document-box button {
     background-color: #007bff;
     border: none;
@@ -150,10 +184,7 @@ input[type="password"] {
     }
 
 .proposal-box {
-
-/*    padding: 20px;
-    display: flex;
-    justify-content: flex-end;*/
+    flex-wrap: wrap;
 }
     .proposal-box .marketbutton button {
         padding: 0px;
@@ -165,6 +196,7 @@ input[type="password"] {
     }
 
     .proposal-box .section {
+        flex-wrap: wrap;
         text-align: center;
         height: 350px;
         margin: 10px 0;

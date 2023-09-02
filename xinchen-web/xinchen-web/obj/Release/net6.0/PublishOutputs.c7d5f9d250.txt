@@ -1,6 +1,7 @@
 C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\obj\Release\net6.0\PubTmp\Out\xinchen-web.exe
 C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
 C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\obj\Release\net6.0\PubTmp\Out\appsettings.json
+C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\obj\Release\net6.0\PubTmp\Out\marketsetting.json
 C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\obj\Release\net6.0\PubTmp\Out\xinchen-web.dll
 C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\obj\Release\net6.0\PubTmp\Out\xinchen-web.deps.json
 C:\Source Code\xinchen-proposal-1\xinchen-web\xinchen-web\obj\Release\net6.0\PubTmp\Out\xinchen-web.runtimeconfig.json

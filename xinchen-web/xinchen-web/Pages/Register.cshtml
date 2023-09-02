@@ -5,25 +5,33 @@
 }
 
 <form method="post">
-    <div>
-        <label for="username">帳號名稱：@user.Name</label>
+    <div class="title">
+        <h1>註冊帳號</h1>
     </div>
-    <div>
-        <label for="fullname">姓名：</label>
-        <input type="text" id="fullname" name="Fullname" required />
-    </div>
-    <div>
-        <label for="phonenumber">電話：</label>
-        <input type="tel" id="phonenumber" name="PhoneNumber" required />
-    </div>
-    <div>
-        <label for="email">Email：</label>
-        <input type="email" id="email" name="Email" />
-    </div>
-    <div>
-        <button type="submit" name="submitbutton" value="save">儲存</button>
-    </div>
-    <div>
-        @TempData["ErrorMessage"]
+    <div class="login-container">
+        <div class="login-box">
+            <div class="div-register-value">
+                <label for="username">帳號名稱：</label>
+                <input type="text" value="@HttpContext.Session.GetString("account")" style="background-color:#dadada;" required readonly />
+            </div>
+            <div class="div-register-value">
+                <label for="fullname">姓名：</label>
+                <input type="text" id="fullname" name="Fullname" maxlength="20" required />
+            </div>
+            <div class="div-register-value">
+                <label for="phonenumber">電話：</label>
+                <input type="tel" id="phonenumber" name="PhoneNumber" maxlength="20" required />
+            </div>
+            <div class="div-register-value">
+                <label for="email">Email：</label>
+                <input type="email" id="email" name="Email" maxlength="50" />
+            </div>
+            <div class="button-container">  
+                <button type="submit" name="submitbutton" value="save">儲存</button>
+            </div>
+            <div class="div-register-value" style="color:red;">
+                    @TempData["ErrorMessage"]
+            </div>
+        </div>
     </div>
 </form>

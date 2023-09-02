@@ -51,7 +51,7 @@
         </div>
     </div>
     <br />
-    <div class="section">
+    <div class="section" id="divMarketDetail">
         <h2>選擇市集細節</h2>
         <div class="marketdetail">
             <label class="select" for="ddlLocation">活動地區:</label>
@@ -100,10 +100,16 @@
     <br />
     <div class="section">
         <label for="proposalname">企劃書名稱：</label>
-        <input type="text" id="proposalname" name="ProposalName" required />
-        <button type="submit" name="submitbutton" value="save" id="btnSubmit">送出</button>
+        <input type="text" id="proposalname" name="ProposalName" maxlength="20" required />
+        <button type="submit" name="submitbutton" value="save" id="btnSubmit">儲存</button>
         <button type="submit" name="submitbutton" value="preview" id="btnReview">預覽</button>
+        <div style="align-content:flex-start">
+            <label id="lblError" style="color:red;"></label>
+        </div>
     </div>
+    <br />
+    
+
 </div>
 
 @section Scripts{
@@ -128,6 +134,9 @@
             });
 
             $('#btnSubmit').click(function(){
+                let isValid = CheckValue();
+                if (!isValid) return;
+
                 var proposal = GetProposalValue();
                 $.ajax({
                     type: "POST",
@@ -140,11 +149,20 @@
                     },
                 })
                 .done(function (result) {
-                    window.location.href = "@Url.Page("/Documents")";
+                    console.log(result);
+                    if (result.code == 'error') {
+                        $('#lblError').text(result.message);
+                    }
+                    else {
+                        window.location.href = "@Url.Page("/Documents")";
+                    }
                 });
             });
 
             $('#btnReview').click(function () {
+                let isValid = CheckValue();
+                if (!isValid) return;
+
                 var proposal = GetProposalValue();
                 $.ajax({
                     type: "POST",
@@ -157,12 +175,13 @@
                     },
                 })
                 .done(function (result) {
-                    if (result.Code == 'error') {
-
+                    console.log(result);
+                    if (result.code == 'error') {
+                        $('#lblError').text(result.message);
                     }
                     else {
-                        var tempProposalId= result.Message;
-                            window.location.href = '/Preview?tempId=' + tempProposalId;
+                        var tempProposalId= result.message;
+                            window.open('/Preview?tempId=' + tempProposalId);
                     }
                     
                 });
@@ -238,6 +257,39 @@
             selectedButton.style.backgroundColor = '#bf5422';
 
             document.getElementById('markettypevalue').value = selectedButton.value;
+        }
+        function CheckValue() {
+            let isValid = true;
+            if ($('#marketstylevalue').val() == ''){
+                $('#divMarketStyle').attr('tabindex', -1).focus();
+                isValid = false;
+            }
+            else if ($('#markettypevalue').val() == '') {
+                $('#divMarketType').attr('tabindex', -1).focus();
+                isValid = false;
+            }
+            else if ($('#ddlLocation').val() == '0' ||
+                $('#ddlMarketScale').val() == '0' ||
+                $('#ddlTent').val() == '0' ||
+                $('#ddlElectricity').val() == '0' ||
+                $('#ddlWaterFacility').val() == '0' ||
+                $('#ddlCharingMode').val() == '0' ||
+                $('#ddlBudgetLevel').val() == '0') {
+
+                $('#divMarketDetail').attr('tabindex', -1).focus();
+                isValid = false;
+            }
+            else if ($('#proposalname').val() == '') {
+                $('#proposalname').focus();
+                isValid = false;
+            }
+
+            if (!isValid){
+                $('#lblError').text('企劃書內容不正確');
+            }
+            
+            return isValid;
+
         }
         function GetProposalValue()
         {

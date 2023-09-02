@@ -11,7 +11,7 @@ namespace xinchen_web.Pages
 {
     public class ProposalModel : PageModel
     {
-        
+
         public readonly MarketSetting _marketSetting;
         private readonly MongoSvc _mongoSvc;
 
@@ -54,9 +54,9 @@ namespace xinchen_web.Pages
             SelectBudgetLevel.Add(_defaultSelection);
 
             Addons = _marketSetting.AddonService.ToList();
-            
+
         }
-        
+
         public void OnPostSubmit()
         {
             var a = Request.Form["chk1"];
@@ -77,7 +77,7 @@ namespace xinchen_web.Pages
             }
             else
             {
-                _mongoSvc.Create(proposal);
+                proposal = _mongoSvc.Create(proposal);
                 UserProposal userProposal = null;
                 userProposal = _mongoSvc.Get<UserProposal>(Builders<UserProposal>.Filter.Eq(x => x.UserId, user.Id)).FirstOrDefault();
                 if (userProposal == null)
@@ -87,7 +87,7 @@ namespace xinchen_web.Pages
                         UserId = user.Id,
                         ProposalId = new List<string>() { proposal.Id }
                     };
-                    _mongoSvc.Create(userProposal);
+                    userProposal = _mongoSvc.Create(userProposal);
                 }
                 else
                 {
@@ -129,7 +129,7 @@ namespace xinchen_web.Pages
                 }
                 return new JsonResult(new ResponseMessage() { Code = "success", Message = userTempProposal.Id });
             }
-            
+
         }
         public JsonResult OnGetSubItems(int locationId)
         {
@@ -172,6 +172,10 @@ namespace xinchen_web.Pages
         private bool IsProposalValid(Proposal proposal)
         {
             if (proposal == null) { return false; }
+            else if (string.IsNullOrEmpty(proposal.Name))
+            { return false; }
+            else if (proposal.Name.Length > 20)
+            { return false; }
             else if (proposal.MarketStyle == 0 ||
                 proposal.MarketType == 0 ||
                 proposal.Location == 0 ||
