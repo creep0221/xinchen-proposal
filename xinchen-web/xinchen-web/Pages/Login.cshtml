@@ -18,11 +18,12 @@
         <div class="login-box">
             <div>
                 <label for="username">帳號名稱：</label>
-                <input type="text" id="username" name="Username" required />
+                <input type="text" id="username" name="Username" maxlength="20" required />
             </div>
             <div>
                 <label for="password">密碼：</label>
-                <input type="password" id="password" name="Password" required />
+                <input type="password" id="password" name="Password" maxlength="30" required />
+                <div style="height:15px; font-size:11px; color:#131313"></div>
             </div>
             <div class="button-container">
                 <button type="submit" name="submitbutton" value="login">登入</button>

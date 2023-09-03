@@ -88,7 +88,7 @@ namespace xinchen_web.Pages
             if (Username.Length < 5 || !Regex.IsMatch(Username, userNamePattern))
             {
                 valid = false;
-                errorMsg += "帳號錯誤" + Environment.NewLine;
+                errorMsg += "帳號限制為 5-20 位的英數字 " + Environment.NewLine;
             }
 
             if (Password.Length < 8 ||
@@ -96,7 +96,7 @@ namespace xinchen_web.Pages
                 !Regex.IsMatch(Password, passwordPattern))
             {
                 valid = false;
-                errorMsg += "不符規則的密碼" + Environment.NewLine;
+                errorMsg += "密碼規則為 8-30 位的英數字與特殊符號 " + Environment.NewLine;
             }
 
             return valid;

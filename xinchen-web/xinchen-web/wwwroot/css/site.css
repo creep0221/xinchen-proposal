@@ -1,19 +1,7 @@
 ﻿html {
     font-size: 14px;
-}
-
-@media screen and (max-width: 768px) {
-    .login-box {
-        max-width: 100%;
-    }
-    .proposal-box {
-        max-width: 100%;
-    }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
@@ -22,6 +10,45 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
 }
+
+@media screen and (max-width: 767px) {
+    .login-box {
+        max-width: 100%;
+    }
+
+    .proposal-box {
+        max-width: 100%;
+    }
+
+    body {
+        font-size: 11px;
+    }
+
+    .proposal-box .marketbutton button {
+        padding: 0px;
+        width: 120px;
+        height: 120px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+    }
+
+    .proposal-box .section {
+        flex-wrap: wrap;
+        text-align: center;
+        height: fit-content;
+        margin: 10px 0;
+    }
+
+    .marketdetail label.select {
+        display: inline-block; /* 讓 <label> 元素佔據單獨的一行，以便對齊 */
+        width: 80px; /* 設定 <label> 的寬度，根據需求調整 */
+        text-align: left; /* 將 <label> 內的文本內容靠左對齊 */
+        margin-right: 10px; /* 為了增加 <label> 和輸入框之間的間距 */
+    }
+}
+
+
 button {
     padding: 10px;
     background-color: #007bff;
@@ -182,10 +209,11 @@ input[type="password"] {
     .document-box button span {
         margin-top: 5px;
     }
+@media screen and (min-width: 768px) {
+    .proposal-box {
+        flex-wrap: wrap;
+    }
 
-.proposal-box {
-    flex-wrap: wrap;
-}
     .proposal-box .marketbutton button {
         padding: 0px;
         width: 150px;
@@ -198,9 +226,11 @@ input[type="password"] {
     .proposal-box .section {
         flex-wrap: wrap;
         text-align: center;
-        height: 350px;
+        /*height: 350px;*/
         margin: 10px 0;
     }
+}
+
 
 .marketdetail {
     height:30px;
