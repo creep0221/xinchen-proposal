@@ -834,7 +834,7 @@ namespace xinchen_web.Models
             ScaleDesc.Add(2, medium);
             
             var small = new MarketScaleDescription();
-            large.Description = @"
+            small.Description = @"
 <div>
     <img src=""/images/scale/03small.jpg"" />
 </div>
